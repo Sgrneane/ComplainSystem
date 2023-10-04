@@ -20,6 +20,7 @@ class Complain(models.Model):
     
 class ComplainName(models.Model):
     department_name = models.CharField(max_length=255)
+    
     complain_name = models.CharField(max_length=255)
     
     def __str__(self):
