@@ -1,5 +1,5 @@
 <!-- Left Dashoboard -->
-
+{% load static %}
 <section id="left-dash">
     <div class="row">
         <div class="left-dash">
@@ -23,7 +23,7 @@
                         <p>Dashboard</p>
                     </a>
 
-                    <a href="complain-dash.php" class="left-dash-item">
+                    <a href="{% url 'main:create_complain' %}" class="left-dash-item">
                         <p>Create Complain</p>
                     </a>
 
@@ -51,14 +51,14 @@
                         <p>My Account</p>
                     </a>
 
-                    <a href="login-page.php" class="left-dash-item">
+                    <a href="{% url 'account:logout' %}" class="left-dash-item">
                         <p>Logout</p>
                     </a>
 
                 </div>
 
                 <div class="left-dash-lower">
-                    <img src="image/hello-logo.svg" alt="">
+                    <img src="{% static 'image/hello-logo.svg'} alt="">
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="left-dash-lower">
-                        <img src="image/hello-logo.svg" alt="">
+                        <img src="{% static 'image/hello-logo.svg'%}" alt="">
                     </div>
                 </div>
             </div>
