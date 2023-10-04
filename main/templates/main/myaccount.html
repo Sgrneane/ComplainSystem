@@ -1,0 +1,101 @@
+<!-- My account Dashoboard -->
+{% include 'layouts/header.html' %}
+
+<section id="dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                
+                {% include 'layouts/left-dash.html' %}
+            
+
+            </div>
+            <div class="col-md-10 arrange-account">
+                <div class="mid-complain">
+                    <div class="mid-complain-heading">
+                        <div class="dash-header">
+                            <div class="pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M13.7369 17.5254C13.6332 17.5256 13.5305 17.5052 13.4347 17.4655C13.3388 17.4259 13.2518 17.3677 13.1786 17.2942L8.44174 12.5574C8.29379 12.4092 8.21069 12.2084 8.21069 11.9991C8.21069 11.7897 8.29379 11.5889 8.44174 11.4408L13.1786 6.70392C13.3266 6.55584 13.5275 6.47266 13.7369 6.47266C13.9463 6.47266 14.1471 6.55584 14.2952 6.70392C14.4433 6.85199 14.5265 7.05282 14.5265 7.26223C14.5265 7.47164 14.4433 7.67248 14.2952 7.82055L10.1167 11.9997L14.2952 16.1776C14.4056 16.288 14.4809 16.4287 14.5113 16.5819C14.5418 16.735 14.5262 16.8938 14.4664 17.0381C14.4066 17.1823 14.3054 17.3056 14.1756 17.3924C14.0457 17.4791 13.8931 17.5254 13.7369 17.5254Z"
+                                        fill="black" />
+                                </svg>
+                            </div>
+                            <div class="heading">
+                                <p>My Account</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% if request.user.is_authenticated %}
+
+                    <div class="myaccount-content">
+                        <div class="myaccount-upper">
+                            <div class="account-user">
+                                <div class="account-user-int">
+                                    <p>S</p>
+                                </div>
+
+                                <div class="account-user-details">
+                                    <div class="account-name">
+                                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17"
+                                            viewBox="0 0 16 17" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M5.01371 3.26406C5.52816 3.22301 6.01655 3.02071 6.40936 2.68597C7.326 1.90481 8.67419 1.90481 9.59084 2.68597C9.98364 3.02071 10.472 3.22301 10.9865 3.26406C12.187 3.35987 13.1403 4.31318 13.2361 5.51371C13.2772 6.02816 13.4795 6.51655 13.8142 6.90936C14.5954 7.826 14.5954 9.17419 13.8142 10.0908C13.4795 10.4836 13.2772 10.972 13.2361 11.4865C13.1403 12.687 12.187 13.6403 10.9865 13.7361C10.472 13.7772 9.98364 13.9795 9.59084 14.3142C8.67419 15.0954 7.326 15.0954 6.40936 14.3142C6.01655 13.9795 5.52816 13.7772 5.01371 13.7361C3.81318 13.6403 2.85987 12.687 2.76406 11.4865C2.72301 10.972 2.52071 10.4836 2.18597 10.0908C1.40481 9.17419 1.40481 7.826 2.18597 6.90936C2.52071 6.51655 2.72301 6.02816 2.76406 5.51371C2.85987 4.31318 3.81318 3.35987 5.01371 3.26406ZM10.9658 7.46578C11.2782 7.15336 11.2782 6.64683 10.9658 6.33441C10.6534 6.02199 10.1468 6.02199 9.83441 6.33441L7.2001 8.96873L6.16578 7.93441C5.85336 7.62199 5.34683 7.62199 5.03441 7.93441C4.72199 8.24683 4.72199 8.75336 5.03441 9.06578L6.63441 10.6658C6.94683 10.9782 7.45336 10.9782 7.76578 10.6658L10.9658 7.46578Z"
+                                                fill="#FCB810" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="account-email">
+                                        <p>Email: <span>{{user.email}}</span></p>
+                                    </div>
+
+                                    <div class="account-phone">
+                                        <p>Phone No: <span>{{ user.phone_number }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="account-button">
+                                <div class="account-upper-button">
+                                    <button><a href=""> Edit Profile </a></button>
+                                </div>
+                                <div class="account-upper-button">
+                                    <button><a href="{% url 'account:forget_password' %}"> Change Password </a></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="myaccount-lower">
+                            <div class="account-user-heading">
+                                <p>User Details</p>
+                            </div>
+
+                            <div class="personal-details">
+                                <div class="personal-info">
+                                    <p>Full Name</p>
+                                    <h5>{{user.first_name}} {{ user.last_name }}</h5>
+                                </div>
+                                <div class="personal-info">
+                                    <p>Phone Number</p>
+                                    <h5>{{user.phone_number}}</h5>
+                                </div>
+                                <div class="personal-info">
+                                    <p>Email</p>
+                                    <h5>{{ user.email}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+
+
+            </div>
+        </div>
+</section>
+
+
+{% include 'layouts/footer.html' %}
