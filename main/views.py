@@ -23,6 +23,7 @@ def create_complain(request):
             complain_message=complain_message,
             complain_image=image,
         )
+        print(image)
         return redirect(reverse('main:my_complain'))
    
     return render(request,'main/create-complain.html')
@@ -42,6 +43,14 @@ def admin_all_complains(request):
         'all_complains': all_complains
     }
     return render(request,'main/admin_allcomplains.html',context)
+def view_complain(request):
+    return render(request,'main/view_complain.html')
+
+def all_complain(request):
+    return render(request,'main/all_complains.html')
+
+def anonymous_complain(request):
+    return render(request,'main/anonymous_complains.html')
 def my_account(request):
     return render(request,'main/myaccount.html')
 

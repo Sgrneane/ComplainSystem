@@ -41,7 +41,7 @@
                             <button><a href="">View Complain</a></button>
                         </div>
                     </div>
-                   <form method="post" action="{% url 'main:create_complain' %}">
+                   <form method="post" action="{% url 'main:create_complain' %}" class="w-100">
                     {% csrf_token %}
                     <div class="mid-complain-content">
                         <div class="complain-front">
