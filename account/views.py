@@ -33,7 +33,7 @@ def signup(request):
             password=password,
             phone_number=phonenumber,
         )
-        return render(request,'account:login_user')
+        return redirect(reverse('account:login_user'))
     else:
         return render(request, 'account/signup.html')
 @decorators.authentication_not_required  
