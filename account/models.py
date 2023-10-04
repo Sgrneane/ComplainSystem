@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
     role = models.PositiveSmallIntegerField(choices=choices.ROLE_CHOICES, blank=True, null=False,default=3)
     admin_category=models.CharField(choices=choices.ADMIN_CATEGORY,max_length=255,blank=True,null=True)
     USERNAME_FIELD='email'
-    REQUIRED_FIELDS=[]
+    REQUIRED_FIELDS=['username',]
     
     
     def __str__(self) -> str:

@@ -41,7 +41,7 @@
                             <button><a href="">View Complain</a></button>
                         </div>
                     </div>
-                   <form method="post" action="{% url 'main:create_complain' %}">
+                   <form method="post" action="{% url 'main:create_complain' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mid-complain-content">
                         <div class="complain-front">
@@ -55,9 +55,9 @@
                                 <p>Complain Category</p>
                                 <div class="complain-input">
                                     <select name="to_complain" id="complain-cat" placeholder="placeholder">
-                                        <option value="electricity">Electricity</option>
-                                        <option value="drinking-water">Drinking Water</option>
-                                        <option value="telecommunitation">Tele-communication</option>
+                                        {% for c in complain_name %}
+                                            <option value={{c.id}}>{{c}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="complain-details">
                                     <div class="input-group">
                                         <input type="file" class="form-control" id="inputGroupFile04"
-                                            aria-describedby="inputGroupFileAddon04" aria-label="Upload"name="complain_image">
+                                            aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="complain_image">
                                     </div>
                                 </div>
                             </div>
