@@ -48,6 +48,14 @@ def admin_all_complains(request):
         'all_complains': all_complains
     }
     return render(request,'main/admin_allcomplains.html',context)
+def view_complain(request):
+    return render(request,'main/view_complain.html')
+
+def all_complain(request):
+    return render(request,'main/all_complains.html')
+
+def anonymous_complain(request):
+    return render(request,'main/anonymous_complains.html')
 def my_account(request):
     return render(request,'main/myaccount.html')
 

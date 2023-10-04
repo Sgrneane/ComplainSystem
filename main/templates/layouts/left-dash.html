@@ -27,19 +27,19 @@
                         <p>Create Complain</p>
                     </a>
 
-                    <a href="mycomplain.php" class="left-dash-item">
+                    <a href="{% url 'main:my_complain' %}" class="left-dash-item">
                         <p>My Complain</p>
                     </a>
 
-                    <a href="view-complains-dash.php" class="left-dash-item">
+                    <a href="{% url 'main:view_complain' %}" class="left-dash-item">
                         <p>View Complains</p>
                     </a>
                     
-                    <a href="all-complains-dash.php" class="left-dash-item">
+                    <a href="{% url 'main:all_complains' %}" class="left-dash-item">
                         <p>All Complains</p>
                     </a>
 
-                    <a href="anonymous-complains-dash.php" class="left-dash-item">
+                    <a href="{% url 'main:anonymous_complains' %}" class="left-dash-item">
                         <p>Anonymous Complains</p>
                     </a>
 
@@ -47,7 +47,7 @@
                         <p>Users</p>
                     </a>
 
-                    <a href="myaccount.php" class="left-dash-item">
+                    <a href="{% url 'main:my_account' %}" class="left-dash-item">
                         <p>My Account</p>
                     </a>
 
