@@ -22,23 +22,18 @@ def signup(request):
         if CustomUser.objects.filter(email=email).first():
             messages.info(request, f'User with this email "{ email }" already exists')
             return redirect(reverse('account:signup'))
-        if CustomUser.objects.filter(username=username.first()):
+        if CustomUser.objects.filter(username=username).first():
             messages.info(request, f'User with this username "{ username }" already exists')
             return redirect('account:signup') 
-        otp=generate_otp()
         CustomUser.objects.create(
+            username=username,
             first_name=first_name,
             last_name=last_name,
             email=email,
             password=password,
             phone_number=phonenumber,
-            otp=otp
         )
-        subject = 'Your OTP Code'
-        message = f'Your OTP code is: {otp}'
-        recipient_list = [email]
-        send_mail(subject, message,recipient_list)
-        return redirect(reverse('account:otp_verify'))
+        return render(request,'account:login_user')
     else:
         return render(request, 'account/signup.html')
 @decorators.authentication_not_required  
@@ -50,13 +45,7 @@ def login_user(request):
             user=authenticate(request,username=email, password=password)
             if user is not None:
                 login(request,user)
-                role=user.role
-                if role==1:
-                    return redirect(reverse('main:superadmin_dashboard'))
-                elif role==2:
-                    return redirect(reverse('main:admin_dashboard'))
-                else:
-                    return redirect(reverse('main:user_dashboard'))
+                return redirect(reverse('main:dashboard'))
             else:
                 return HttpResponse("Invalid Credentials")
         except AuthAlreadyAssociated:
