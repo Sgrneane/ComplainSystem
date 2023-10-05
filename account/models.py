@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
+from main.models import ComplainName
 from django.utils import timezone
 from . import choices
 
@@ -17,7 +18,6 @@ class CustomUser(AbstractUser):
                                   validators=[RegexValidator(r'^\d{10}$', 'Phone number must be 10 digits')])
     created_date=models.DateTimeField(default=timezone.now)
     role = models.PositiveSmallIntegerField(choices=choices.ROLE_CHOICES, blank=True, null=False,default=3)
-    admin_category=models.CharField(choices=choices.ADMIN_CATEGORY,max_length=255,blank=True,null=True)
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=['username',]
     

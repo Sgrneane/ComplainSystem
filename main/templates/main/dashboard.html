@@ -86,9 +86,8 @@
                         </div>
 
                     </div>
-
                     <div class="complain">
-                        <a href="complain-dash.php" class="complain1">
+                        <a href="{% url 'main:create_complain' %}" class="complain1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65"
                                 fill="none">
                                 <path
@@ -110,12 +109,13 @@
                                     stroke="black" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
 
+                            
                             <div class="complain-name">
                                 <p>Complain</p>
                                 <p>(गुनासो)</p>
                             </div>
                         </a>
-                        <a href="" class="complain1">
+                        <a href="{% url 'main:my_complain' %}" class="complain1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65"
                                 fill="none">
                                 <path

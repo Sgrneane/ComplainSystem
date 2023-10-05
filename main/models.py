@@ -19,9 +19,9 @@ class Complain(models.Model):
     
     
 class ComplainName(models.Model):
-    department_name = models.CharField(max_length=255)
-    complain_name = models.CharField(max_length=255)
-    
+    department_name = models.CharField(max_length=255,null=False)
+    complain_name = models.CharField(max_length=255,null=False)
+
     def __str__(self):
         return self.complain_name
     

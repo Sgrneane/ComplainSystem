@@ -9,10 +9,11 @@ urlpatterns = [
     path('dashboard/', views.dashboard,name='dashboard'),
     path('create_complain', views.create_complain,name='create_complain'),
     path('my_complain',views.my_complain, name='my_complain'),
-    path('admin_all_complains',views.admin_all_complains,name='admin_all_complains'),
     path('my_account',views.my_account,name='my_account'),
     path('view_complain', views.view_complain, name='view_complain'),
     path('all_complain', views.all_complain, name='all_complains'),
+    path('add_category', views.add_category, name='add_category'),
+    path('view_category', views.view_category,name='view_category'),
     path('anonymous_complain', views.anonymous_complain, name='anonymous_complains'),
     path('all_user', views.all_user, name='all_user'),
 ]

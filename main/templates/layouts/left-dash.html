@@ -18,21 +18,9 @@
                             </svg>
                         </a>
                     </div>
-
+                    {% if request.user.role == 1 %}
                     <a href="{% url 'main:dashboard' %}" class="left-dash-item">
                         <p>Dashboard</p>
-                    </a>
-
-                    <a href="{% url 'main:create_complain' %}" class="left-dash-item">
-                        <p>Create Complain</p>
-                    </a>
-
-                    <a href="{% url 'main:my_complain' %}" class="left-dash-item">
-                        <p>My Complain</p>
-                    </a>
-
-                    <a href="{% url 'main:view_complain' %}" class="left-dash-item">
-                        <p>View Complains</p>
                     </a>
                     
                     <a href="{% url 'main:all_complains' %}" class="left-dash-item">
@@ -46,6 +34,9 @@
                     <a href="{% url 'main:all_user' %}" class="left-dash-item">
                         <p>Users</p>
                     </a>
+                    <a href="{% url 'main:view_category' %}" class="left-dash-item">
+                        <p>Add Category</p>
+                    </a>
 
                     <a href="{% url 'main:my_account' %}" class="left-dash-item">
                         <p>My Account</p>
@@ -54,11 +45,52 @@
                     <a href="{% url 'account:logout_user' %}" class="left-dash-item">
                         <p>Logout</p>
                     </a>
+                    {% endif %}
+                    {% if request.user.role == 2 %}
+                    <a href="{% url 'main:dashboard' %}" class="left-dash-item">
+                        <p>Dashboard</p>
+                    </a>
 
+
+
+                    <a href="{% url 'main:view_complain' %}" class="left-dash-item">
+                        <p>View Complains</p>
+                    </a>
+
+                    <a href="{% url 'main:my_account' %}" class="left-dash-item">
+                        <p>My Account</p>
+                    </a>
+
+                    <a href="{% url 'account:logout_user' %}" class="left-dash-item">
+                        <p>Logout</p>
+                    </a>
+                    {% endif %}
+                    {% if request.user.role == 3 %}
+                    <a href="{% url 'main:dashboard' %}" class="left-dash-item">
+                        <p>Dashboard</p>
+                    </a>
+
+                    <a href="{% url 'main:create_complain' %}" class="left-dash-item">
+                        <p>Create Complain</p>
+                    </a>
+
+                    <a href="{% url 'main:my_complain' %}" class="left-dash-item">
+                        <p>My Complain</p>
+                    </a>
+
+                    <a href="{% url 'main:my_account' %}" class="left-dash-item">
+                        <p>My Account</p>
+                    </a>
+
+                    <a href="{% url 'account:logout_user' %}" class="left-dash-item">
+                        <p>Logout</p>
+                    </a>
+                    {% endif %}
                 </div>
+               
 
                 <div class="left-dash-lower">
-                    <img src="{% static 'image/hello-logo.svg'} alt="">
+                    <img src="{% static 'image/hello-logo.svg' %}" alt="">
                 </div>
             </div>
         </div>
@@ -113,7 +145,7 @@
                     </div>
 
                     <div class="left-dash-lower">
-                        <img src="{% static 'image/hello-logo.svg'%}" alt="">
+                        <img src="{% static 'image/hello-logo.svg' %}" alt="">
                     </div>
                 </div>
             </div>
