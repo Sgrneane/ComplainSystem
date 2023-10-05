@@ -1292,7 +1292,7 @@ a.complain1 {
 
 .mid-complain {
   display: flex;
-  width: 1570px;
+  /* width: 1570px; */
   padding: 25px;
   flex-direction: column;
   align-items: flex-start;
