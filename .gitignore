@@ -8,3 +8,4 @@ media
 .cache 
 .env 
 venv
+env/
