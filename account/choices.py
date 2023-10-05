@@ -7,9 +7,4 @@ ROLE_CHOICES = (
         (ADMIN,'ADMIN'),
         (USER, 'USER'),
     )
-ADMIN_CATEGORY=(
-    ('drinking-water','Drinking Water'),
-    ('electriciry','Electricity'),
-    ('telecommunication','Telecommunication')
-)
 
