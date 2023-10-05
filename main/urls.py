@@ -14,4 +14,5 @@ urlpatterns = [
     path('view_complain', views.view_complain, name='view_complain'),
     path('all_complain', views.all_complain, name='all_complains'),
     path('anonymous_complain', views.anonymous_complain, name='anonymous_complains'),
+    path('all_user', views.all_user, name='all_user'),
 ]

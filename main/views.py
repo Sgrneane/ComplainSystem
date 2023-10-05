@@ -56,6 +56,9 @@ def all_complain(request):
 
 def anonymous_complain(request):
     return render(request,'main/anonymous_complains.html')
+
+def all_user(request):
+    return render(request, 'main/all_user.html')
 def my_account(request):
     return render(request,'main/myaccount.html')
 
