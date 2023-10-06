@@ -128,19 +128,19 @@
                                 <button><a href="">Search</a></button>
                             </div>
                         </div>
-
+                        {% for anonymous_complain in anonymous_complains %}
                         <div class="card  w-100">
                             <div class="card-body">
                                 <div class="card-button ">
-                                    <button class="card-button-left"><a href="">Category</a></button>
+                                    <button class="card-button-left"><a href="">{{ anonymous_complain.to_complain.department_name }}</a></button>
                                     <div class="card-button-right">
                                         <a href="#" class="btn card-btn-anchor  btn-warning"><span class="material-symbols-outlined">visibility </span>&nbspView Complain </a>
                                         <a href="#" class="btn card-btn-anchor btn-warning"><span class="material-symbols-outlined">edit</span>&nbspEdit Complain</a>
                                         <a href="#" class="btn card-btn-anchor btn-warning"><i class="fa-solid fa-share"></i>&nbspReply</a>
                                     </div>
                                 </div>
-                                <h5 class="card-title">Complain Title</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <h5 class="card-title">{{ anonymous_complain.complain_title }}</h5>
+                                <p class="card-text">{{ anonymous_complain.complain_message }}</p>
                                 <div class="card-status-sec">
                                     <div class="card-status-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19"
@@ -168,116 +168,21 @@
                                         </svg>
                                     </div>
                                     
-                                    <span class="card-date">10-14-1999</span>
+                                    <span class="card-date">{{ anonymous_complain.created_date }}</span>
 
                                     <div class="card-status-icon">
                                          <span class="material-symbols-outlined">account_circle</span>
                                     </div>
                                     
-                                    <span class="card-authorname">Sagar Neupane</span>
+        
                                 </div>
                                                                
                             </div>
                         </div>
+                       {% endfor %}
+                        
 
-                        <div class="card  w-100">
-                            <div class="card-body">
-                                <div class="card-button ">
-                                    <button class="card-button-left"><a href="">Category</a></button>
-                                    <div class="card-button-right">
-                                        <a href="#" class="btn card-btn-anchor  btn-warning"><span class="material-symbols-outlined">visibility </span>&nbspView Complain </a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><span class="material-symbols-outlined">edit</span>&nbspEdit Complain</a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><i class="fa-solid fa-share"></i>&nbspReply</a>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Complain Title</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="card-status-sec">
-                                    <div class="card-status-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19"
-                                            viewBox="0 0 24 25" fill="none">
-                                            <g clip-path="url(#clip0_244_877)">
-                                                <path
-                                                    d="M20.2594 24.3285H3.74058C2.7955 24.3265 1.88971 23.9502 1.22144 23.2819C0.553166 22.6137 0.176854 21.7079 0.174861 20.7628V6.36967C0.176675 5.42395 0.553401 4.51753 1.22245 3.84912C1.8915 3.18072 2.79828 2.80486 3.744 2.80396H20.2629C21.2086 2.80577 22.115 3.1825 22.7834 3.85154C23.4518 4.52059 23.8277 5.42737 23.8286 6.3731V20.7594C23.8275 21.7056 23.4511 22.6128 22.782 23.2819C22.1129 23.9511 21.2057 24.3274 20.2594 24.3285ZM3.74058 4.51481C3.2488 4.51536 2.77733 4.71095 2.42959 5.05869C2.08186 5.40642 1.88626 5.8779 1.88572 6.36967V20.7594C1.88735 21.2505 2.0834 21.721 2.431 22.068C2.7786 22.4149 3.24945 22.6101 3.74058 22.6108H20.2594C20.75 22.6094 21.2201 22.4138 21.567 22.0669C21.9139 21.72 22.1094 21.25 22.1109 20.7594V6.36967C22.1096 5.87903 21.9141 5.40885 21.5672 5.06191C21.2203 4.71498 20.7501 4.51951 20.2594 4.51824L3.74058 4.51481Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M22.9714 12.384H1.05669C0.829358 12.384 0.61134 12.2937 0.450594 12.1329C0.289849 11.9722 0.199543 11.7541 0.199543 11.5268C0.199543 11.2995 0.289849 11.0815 0.450594 10.9207C0.61134 10.76 0.829358 10.6697 1.05669 10.6697H22.9714C23.1988 10.6697 23.4168 10.76 23.5775 10.9207C23.7383 11.0815 23.8286 11.2995 23.8286 11.5268C23.8286 11.7541 23.7383 11.9722 23.5775 12.1329C23.4168 12.2937 23.1988 12.384 22.9714 12.384Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M6.48619 6.77767C6.3736 6.77776 6.2621 6.75565 6.15807 6.71261C6.05403 6.66957 5.95951 6.60643 5.87989 6.52682C5.80028 6.44721 5.73715 6.35269 5.69411 6.24865C5.65106 6.14462 5.62895 6.03312 5.62904 5.92053V1.52853C5.62904 1.3012 5.71935 1.08318 5.8801 0.922438C6.04084 0.761693 6.25886 0.671387 6.48619 0.671387C6.71351 0.671387 6.93153 0.761693 7.09228 0.922438C7.25302 1.08318 7.34333 1.3012 7.34333 1.52853V5.92053C7.34333 6.14786 7.25302 6.36588 7.09228 6.52662C6.93153 6.68737 6.71351 6.77767 6.48619 6.77767Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M17.5145 6.77767C17.4019 6.77776 17.2904 6.75565 17.1864 6.71261C17.0824 6.66957 16.9878 6.60643 16.9082 6.52682C16.8286 6.44721 16.7655 6.35269 16.7224 6.24865C16.6794 6.14462 16.6573 6.03312 16.6574 5.92053V1.52853C16.6574 1.3012 16.7477 1.08318 16.9084 0.922438C17.0692 0.761693 17.2872 0.671387 17.5145 0.671387C17.7419 0.671387 17.9599 0.761693 18.1206 0.922438C18.2814 1.08318 18.3717 1.3012 18.3717 1.52853V5.92053C18.3717 6.14786 18.2814 6.36588 18.1206 6.52662C17.9599 6.68737 17.7419 6.77767 17.5145 6.77767Z"
-                                                    fill="black" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_244_877">
-                                                    <rect width="24" height="24" fill="white"
-                                                        transform="translate(0 0.5)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    
-                                    <span class="card-date">10-14-1999</span>
-
-                                    <div class="card-status-icon">
-                                         <span class="material-symbols-outlined">account_circle</span>
-                                    </div>
-                                    
-                                    <span class="card-authorname">Sagar Neupane</span>
-                                </div>
-                                                               
-                            </div>
-                        </div>
-
-                        <div class="card  w-100">
-                            <div class="card-body">
-                                <div class="card-button ">
-                                    <button class="card-button-left"><a href="">Category</a></button>
-                                    <div class="card-button-right">
-                                        <a href="#" class="btn card-btn-anchor  btn-warning"><span class="material-symbols-outlined">visibility </span>&nbspView Complain </a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><span class="material-symbols-outlined">edit</span>&nbspEdit Complain</a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><i class="fa-solid fa-share"></i>&nbspReply</a>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Complain Title</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="card-status-sec">
-                                    <div class="card-status-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19"
-                                            viewBox="0 0 24 25" fill="none">
-                                            <g clip-path="url(#clip0_244_877)">
-                                                <path
-                                                    d="M20.2594 24.3285H3.74058C2.7955 24.3265 1.88971 23.9502 1.22144 23.2819C0.553166 22.6137 0.176854 21.7079 0.174861 20.7628V6.36967C0.176675 5.42395 0.553401 4.51753 1.22245 3.84912C1.8915 3.18072 2.79828 2.80486 3.744 2.80396H20.2629C21.2086 2.80577 22.115 3.1825 22.7834 3.85154C23.4518 4.52059 23.8277 5.42737 23.8286 6.3731V20.7594C23.8275 21.7056 23.4511 22.6128 22.782 23.2819C22.1129 23.9511 21.2057 24.3274 20.2594 24.3285ZM3.74058 4.51481C3.2488 4.51536 2.77733 4.71095 2.42959 5.05869C2.08186 5.40642 1.88626 5.8779 1.88572 6.36967V20.7594C1.88735 21.2505 2.0834 21.721 2.431 22.068C2.7786 22.4149 3.24945 22.6101 3.74058 22.6108H20.2594C20.75 22.6094 21.2201 22.4138 21.567 22.0669C21.9139 21.72 22.1094 21.25 22.1109 20.7594V6.36967C22.1096 5.87903 21.9141 5.40885 21.5672 5.06191C21.2203 4.71498 20.7501 4.51951 20.2594 4.51824L3.74058 4.51481Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M22.9714 12.384H1.05669C0.829358 12.384 0.61134 12.2937 0.450594 12.1329C0.289849 11.9722 0.199543 11.7541 0.199543 11.5268C0.199543 11.2995 0.289849 11.0815 0.450594 10.9207C0.61134 10.76 0.829358 10.6697 1.05669 10.6697H22.9714C23.1988 10.6697 23.4168 10.76 23.5775 10.9207C23.7383 11.0815 23.8286 11.2995 23.8286 11.5268C23.8286 11.7541 23.7383 11.9722 23.5775 12.1329C23.4168 12.2937 23.1988 12.384 22.9714 12.384Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M6.48619 6.77767C6.3736 6.77776 6.2621 6.75565 6.15807 6.71261C6.05403 6.66957 5.95951 6.60643 5.87989 6.52682C5.80028 6.44721 5.73715 6.35269 5.69411 6.24865C5.65106 6.14462 5.62895 6.03312 5.62904 5.92053V1.52853C5.62904 1.3012 5.71935 1.08318 5.8801 0.922438C6.04084 0.761693 6.25886 0.671387 6.48619 0.671387C6.71351 0.671387 6.93153 0.761693 7.09228 0.922438C7.25302 1.08318 7.34333 1.3012 7.34333 1.52853V5.92053C7.34333 6.14786 7.25302 6.36588 7.09228 6.52662C6.93153 6.68737 6.71351 6.77767 6.48619 6.77767Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M17.5145 6.77767C17.4019 6.77776 17.2904 6.75565 17.1864 6.71261C17.0824 6.66957 16.9878 6.60643 16.9082 6.52682C16.8286 6.44721 16.7655 6.35269 16.7224 6.24865C16.6794 6.14462 16.6573 6.03312 16.6574 5.92053V1.52853C16.6574 1.3012 16.7477 1.08318 16.9084 0.922438C17.0692 0.761693 17.2872 0.671387 17.5145 0.671387C17.7419 0.671387 17.9599 0.761693 18.1206 0.922438C18.2814 1.08318 18.3717 1.3012 18.3717 1.52853V5.92053C18.3717 6.14786 18.2814 6.36588 18.1206 6.52662C17.9599 6.68737 17.7419 6.77767 17.5145 6.77767Z"
-                                                    fill="black" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_244_877">
-                                                    <rect width="24" height="24" fill="white"
-                                                        transform="translate(0 0.5)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    
-                                    <span class="card-date">10-14-1999</span>
-
-                                    <div class="card-status-icon">
-                                         <span class="material-symbols-outlined">account_circle</span>
-                                    </div>
-                                    
-                                    <span class="card-authorname">Sagar Neupane</span>
-                                </div>
+                        
                                                                
                             </div>
                         </div>

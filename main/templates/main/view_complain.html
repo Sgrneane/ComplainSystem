@@ -56,12 +56,33 @@
                                 <p>Title Name</p>
                                 <h5>Placeholder</h5>
                             </div>
-                            <div class="complain-image">
-                                <div class="inner-image">
-                                    <!-- <img src="{{complain.complain_image.url}}" alt=""> -->
-                                </div>
-                            </div>
+                            <a
+  data-fancybox
+  data-src="{{complain.complain_image.url}}"
+  data-caption="{{ complain.complain_title}}"
+>
+  <img src="{{complain.complain_image.url}}" width="200" height="150" alt="" />
+</a>
                         </div>
+
+                        <div class="clist-photo">
+                            <button type="button" class="btn-cm" onclick="showform()">Reply</button>
+                        </div>
+
+                        <div class="clist-photo w-100" id="myDiv" style="display:none;">
+                            <form class="row w-80" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="col-lg-12">
+                                    <h2 for="Message" class="w-100">Message</h2>
+                                    <textarea name="response_body" id="editor"  style="width: 400px; height: 200px;" placeholder="Message"></textarea>
+                                    <input type="file" class="w-100 mt-3" name="response_image">
+                                    <button class="btn-cm mt-4" type="submit">Submit </button>
+                                </div>
+                                
+                            </form>
+                            
+                        </div>
+
                     </div>
 
                     <div class="complain-response">

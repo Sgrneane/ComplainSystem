@@ -323,21 +323,27 @@
   #home-footer .second-line .parts {
     padding: 10px !important;
   }
+
   #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
-  
-  #customers td, #customers th {
+
+  #customers td,
+  #customers th {
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #customers tr:hover {background-color: #ddd;}
-  
+
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+
   #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -1136,11 +1142,9 @@ a.left-dash-item {
 
 .complain1:hover {
   border: 1px solid var(--pra-yellow, #fcb810);
-  background: linear-gradient(
-      0deg,
+  background: linear-gradient(0deg,
       rgba(252, 184, 16, 0.1) 0%,
-      rgba(252, 184, 16, 0.1) 100%
-    ),
+      rgba(252, 184, 16, 0.1) 100%),
     #fff;
 }
 
@@ -1165,6 +1169,7 @@ a.complain1 {
   line-height: normal;
   margin-bottom: 0px;
 }
+
 /* Extra COde */
 
 .right-dash {
@@ -2323,14 +2328,14 @@ a.login-social {
   flex: 1 0 0;
 }
 
-.inner-image {
+/* .inner-image {
   width: 199px;
   height: 145px;
   border-radius: 6px;
   border: 1px solid var(--Border1);
   background: url(../image/c-image.png);
   background-repeat: no-repeat;
-}
+} */
 
 .complain-response {
   display: flex;
@@ -2460,6 +2465,25 @@ a.login-social {
   border-radius: 6px;
 }
 
+.btn-cm {
+  font-size: 16px;
+  color: white;
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: var(--Pra-Yellow);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-cm:hover{
+  background-color: #000;
+}
+
 .searchbar-button button {
   display: flex;
   padding: 16px;
@@ -2515,12 +2539,14 @@ a.login-social {
   border-radius: 60px;
   border: 1.5px solid #f2bb43;
 }
+
 .card-button-left a {
   font-size: 15px;
   text-decoration: none;
   color: #926f23;
   padding: 2px 10px;
 }
+
 .card-button-left a:hover {
   color: #926f23;
   background-color: #fdf3bd;
@@ -2878,14 +2904,19 @@ a.login-social {
   width: 100%;
 }
 
-#customers td, #customers th {
+#customers td,
+#customers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+  background-color: #ddd;
+}
 
 #customers th {
   padding-top: 12px;
@@ -2893,4 +2924,14 @@ a.login-social {
   text-align: left;
   background-color: #fcb810;
   color: white;
+}
+
+
+.col-md-10.arrange-complain-list{
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.ck-editor__editable{
+  height: 400px!important;
 }

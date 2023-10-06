@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from account.decorators import is_admin,is_superadmin,is_user
 from django.contrib.auth.decorators import login_required,user_passes_test
-from . models import Complain, ComplainName
+from django.utils import timezone
+from datetime import datetime
+from django.db.models import Q
+from . models import Complain, ComplainName, Response
 from .forms import ComplainForm
 
 # Create your views here.
@@ -66,6 +69,15 @@ def view_complain(request, id):
     context={
         'complain':complain
     }
+    if request.method=="POST":
+        response_body=request.POST.get("response_body")
+        response_image = request.FILES.get("response_image")
+        Response.objects.create(
+            response_to_id=complain.id,
+            response_body=response_body,
+            response_image=response_image,
+        )
+        return redirect("main:view_complain", id=complain)
     return render(request,'main/view_complain.html',context)
 
 
@@ -73,21 +85,50 @@ def view_complain(request, id):
 def all_complain(request):
     user=request.user
     if user.role == 1:
-        complains=Complain.objects.all()
+        complains=Complain.objects.filter(created_by__isnull= False)
     elif user.role == 2:
-        complains=Complain.objects.filter(to_complain__department_name = user.admin_category.department_name)
+        complains=Complain.objects.filter(
+            Q(to_complain__department_name = user.admin_category.department_name) & 
+            Q(created_by__isnull= False)
+        )
     context={
         'complains' :complains,
     }
     return render(request,'main/all_complains.html',context)
 
 def anonymous_complain(request):
-    return render(request,'main/anonymous_complains.html')
+    user=request.user
+    if user.role == 1:
+        anonymous_complains=Complain.objects.filter(created_by__isnull= True)
+    context={
+        'anonymous_complains':anonymous_complains
+    }
+    return render(request,'main/anonymous_complains.html',context)
 
 def all_user(request):
     return render(request, 'main/all_user.html')
 def my_account(request):
     return render(request,'main/myaccount.html')
 
+
+def anonymous_form(request):
+    complain_name = ComplainName.objects.all()
+    context = {'complain_name':complain_name}
+    complaints_today = request.session.get('complaints_today', [])
+    if len(complaints_today) >= 2:
+        return redirect(reverse('main:index'))
+    if request.method == 'POST':
+        form = ComplainForm(request.POST, request.FILES)
+        if form.is_valid():
+            complain = form.save(commit=False)
+            complain.save()
+            current_date_str = datetime.now().date().isoformat()
+            complaints_today.append(current_date_str)
+            request.session['complaints_today'] = complaints_today
+            request.session.save() 
+        return redirect(reverse('main:index'))
+    return render(request,'main/anonymous_form.html',context)
+
+#View for responding to the complain
 
 

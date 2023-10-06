@@ -16,4 +16,5 @@ urlpatterns = [
     path('view_category', views.view_category,name='view_category'),
     path('anonymous_complain', views.anonymous_complain, name='anonymous_complains'),
     path('all_user', views.all_user, name='all_user'),
+    path('anonymous_form', views.anonymous_form, name="anonymous_form")
 ]

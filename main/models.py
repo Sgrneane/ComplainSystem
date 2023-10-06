@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 class Complain(models.Model):
-    created_by=models.ForeignKey(settings.AUTH_USER_MODEL, related_name='my_complains', on_delete=models.CASCADE,default=None)
+    created_by=models.ForeignKey(settings.AUTH_USER_MODEL, related_name='my_complains', on_delete=models.CASCADE,default=None,null=True)
     created_date=models.DateTimeField(auto_now_add=True)
     complain_title=models.CharField(max_length=255,null=False)
     complain_message=models.TextField(null=False)
@@ -27,7 +27,7 @@ class ComplainName(models.Model):
 #Response Model
 class Response(models.Model):
     response_to=models.OneToOneField(Complain, related_name="response", on_delete=models.CASCADE)
-    response_body=models.TextField(max_length=10000)
+    response_body=models.TextField()
     response_image=models.ImageField(null=True,upload_to="Images")
     created_date=models.DateTimeField(auto_now_add=True)
 

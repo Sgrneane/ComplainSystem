@@ -1,0 +1,47 @@
+{% load static %}
+{% load static %}
+{% include 'layouts/header.html' %}
+{% include 'layouts/navbar.html' %}
+<form method="post" action="{% url 'main:anonymous_form' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mid-complain-content">
+        <div class="complain-front">
+            <div class="complain-details">
+                <p>Complain Title</p>
+                <div class="complain-input">
+                    <input type="text" placeholder="Placeholder", name="complain_title">
+                </div>
+            </div>
+            <div class="complain-details">
+                <p>Complain Category</p>
+                <div class="complain-input">
+                    <select name="to_complain" id="complain-cat" placeholder="placeholder">
+                        {% for c in complain_name %}
+                            <option value={{c.id}}>{{c}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="complain-details">
+                <p>Complain Message</p>
+                <div class="describe-complain">
+                    <input type="text" placeholder="Placeholder" name="complain_message">
+                </div>
+            </div>
+            <div class="complain-details">
+                <p>Upload Image</p>
+                <div class="complain-details">
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="inputGroupFile04"
+                            aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="complain_image">
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="submit-button">
+                <input type="submit">
+            </div>
+        </div>
+    </div></form>
