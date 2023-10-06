@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse,redirect,get_list_or_404
+from django.shortcuts import render, HttpResponse,redirect,get_list_or_404, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage,EmailMultiAlternatives,send_mail
 from django.contrib.auth.hashers import make_password
@@ -12,7 +12,7 @@ from social_core.exceptions import AuthAlreadyAssociated
 from . import decorators
 from . import choices
 from .models import CustomUser
-from .forms import SignupForm
+from .forms import SignupForm, EditUserForm
 from .validation import handle_signup_validation
 
 from main.models import ComplainName
@@ -105,6 +105,79 @@ def create_admin(request):
         form = SignupForm()
     context = {'data': data}
     return render(request,'account/create_admin.html', context)
+
+
+def edit_user(request):
+    user = get_object_or_404(CustomUser, id=request.user.id)
+    
+    if request.user.id != user.id and request.user.role != 1:  #allows users to update their own details only while allowing admin to update other users details too
+        messages.error(request, 'Cannot Access!')
+        return redirect('user-edit', id=request.user.id)
+    
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=user)
+        
+        email = request.POST.get("email")
+        username = request.POST.get('username')
+
+        if CustomUser.objects.exclude(id=user.id).filter(username=username).first():
+            messages.info(request, f'User with this username "{username}" already exists')
+            return redirect('main:my_account')
+        
+        if CustomUser.objects.exclude(id=user.id).filter(email=email).first():
+            messages.info(request, f'User with this email "{email}" already exists')
+            return redirect('main:my_account')
+    
+        if form.is_valid():
+            form.save()
+            if request.user.role == 1:
+                messages.success(request, "User Details Updated Successfully")
+                return redirect('main:my_account')
+            else:
+                messages.success(request, "Details Updated Successfully")
+                return redirect('main:my_account')
+        else:
+            print(form.errors)
+            messages.error(request, "Please fill the form with correct data")
+    else:
+        form = EditUserForm()
+        
+    context = {'user': user}
+    return render(request, 'account/edit_user.html', context)
+
+
+def change_password(request):
+    user = get_object_or_404(CustomUser, id=request.user.id)
+    
+    if request.method == 'POST':
+        current_password = request.POST.get('current_password')
+        new_password = request.POST.get('password')
+        retype_new_password = request.POST.get('retype_password')
+        
+        if current_password == '' or new_password == '' or retype_new_password == '':
+            messages.error(request, "Please fill all the fields")
+            return redirect('account:change_password')
+        
+        if not user.check_password(current_password):
+            messages.error(request, "Incorrect Current Password")
+            return redirect('account:change_password')
+            
+        if new_password != retype_new_password:
+            messages.error(request, "New Passwords didn't match")
+            return redirect('account:change_password')
+        
+        if current_password == new_password:
+            messages.error(request, "New Password should not be same as Current Password!")
+            return redirect('account:change_password')
+        
+        user.set_password(new_password)
+        user.save()
+        #update_session_auth_hash(request, user_object) #user is not logged out after changing password
+        messages.success(request, "Password Changed Successfully! Login with new password")
+        return redirect('account:login_user')
+        
+    context = {'user': user}
+    return render(request, 'account/change_password.html', context)
 
 def forget_password(request):
     if request.method=='POST':

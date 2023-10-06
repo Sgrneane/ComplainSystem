@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import CustomUser
+
 
 class SignupForm(forms.Form):
     """Form for  validating user creation."""
@@ -10,3 +12,9 @@ class SignupForm(forms.Form):
     phone_number = forms.IntegerField()
     password = forms.CharField()
     retype_password = forms.CharField()
+    
+
+class EditUserForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'username', 'phone_number']

@@ -58,10 +58,10 @@
                             </div>
                             <div class="account-button">
                                 <div class="account-upper-button">
-                                    <button><a href=""> Edit Profile </a></button>
+                                    <button><a href="{% url 'account:edit_user' %}"> Edit Profile </a></button>
                                 </div>
                                 <div class="account-upper-button">
-                                    <button><a href="{% url 'account:forget_password' %}"> Change Password </a></button>
+                                    <button><a href="{% url 'account:change_password' %}"> Change Password </a></button>
                                 </div>
                             </div>
                         </div>
@@ -73,16 +73,16 @@
 
                             <div class="personal-details">
                                 <div class="personal-info">
-                                    <p>Full Name</p>
-                                    <h5>{{user.first_name}} {{ user.last_name }}</h5>
+                                    <p>Username</p>
+                                    <h5>{{user.username}}</h5>
                                 </div>
                                 <div class="personal-info">
-                                    <p>Phone Number</p>
-                                    <h5>{{user.phone_number}}</h5>
+                                    <p>Role</p>
+                                    <h5>{{user.get_role_display}}</h5>
                                 </div>
                                 <div class="personal-info">
-                                    <p>Email</p>
-                                    <h5>{{ user.email}}</h5>
+                                    <p>Department</p>
+                                    <h5>{{ user.admin_category}}</h5>
                                 </div>
                             </div>
                         </div>
