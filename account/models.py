@@ -38,4 +38,5 @@ class CustomUser(AbstractUser):
             return 'admin'
         else:
             return 'user'
+   
     # list_display = ["email",'first_name','last_name', "username",]
