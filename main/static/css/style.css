@@ -414,7 +414,15 @@
   --Pra-Black: #000000;
 }
 
+body {
+  background: #eef2f6;
+}
+
 /* Nav Bar */
+
+.main-bar {
+  display: none;
+}
 
 .side-bar {
   display: none;
@@ -422,9 +430,8 @@
 
 .nav-main {
   display: flex;
-  width: 1920px;
   height: 90px;
-  padding: 0px 200px;
+  padding: 0px 80px;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
@@ -432,9 +439,9 @@
 
 .logo {
   display: flex;
-  width: 200px;
+  width: auto;
   height: 60px;
-  padding: 0px 53.825px 9.521px 32px;
+  padding: 0px 25px 10px 15px;
   align-items: center;
   flex-shrink: 0;
   border-radius: 6px;
@@ -561,16 +568,13 @@
 
 .mid-part {
   display: inline-flex;
-  padding: 50px 220px;
+  padding: 50px 80px;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
-  margin: auto;
 }
 
 .mid-part .inner-box {
   display: flex;
-  width: 1480px;
   height: 528px;
   padding: 100px 120px 100px 100px;
   justify-content: space-between;
@@ -603,7 +607,7 @@
 .mid-part-front {
   position: relative;
   display: flex;
-  width: 699px;
+  width: 540px;
   flex-direction: column;
   align-items: flex-start;
   gap: 34px;
@@ -821,8 +825,8 @@
 }
 
 #home-footer .last-line .last-line-content {
+  width: 100%;
   display: flex;
-  width: 1432px;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
@@ -903,13 +907,12 @@
 /* Dashboard */
 
 #dashboard {
-  height: 920px;
+  height: auto;
   background: #eef2f6;
 }
 
 .left-dash {
   display: inline-flex;
-  height: 920px;
   padding: 25px;
   flex-direction: column;
   justify-content: space-between;
@@ -918,8 +921,11 @@
 }
 
 .left-dash-content {
+  position: fixed;
+  top: 25px;
   display: flex;
-  padding: 25px 25px 45px 25px;
+  gap: 20px;
+  padding: 15px 25px 30px 25px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -935,13 +941,12 @@
 }
 
 .left-dash-upper .logo {
-  width: 240px;
+  width: auto;
 }
 
 .left-dash-item {
   display: flex;
-  width: 240px;
-  height: 48px;
+  height: 40px;
   padding: 0px 16px;
   align-items: center;
   gap: 12px;
@@ -958,7 +963,7 @@ a.left-dash-item {
   color: #58667e;
   font-feature-settings: "clig" off, "liga" off;
   font-family: Poppins;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 19.6px;
@@ -977,26 +982,17 @@ a.left-dash-item {
 
 /* Dashboard Content */
 .dashboard-content {
-  display: flex;
   padding: 25px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 25px;
   border-radius: 6px;
   background: #fff;
-  align-self: stretch;
 }
 
 .dashboard-mid-part {
   padding-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 25px;
-  align-self: stretch;
 }
 
 .dash-user {
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1016,6 +1012,7 @@ a.left-dash-item {
 
 .dash-middle-content {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 25px;
   align-self: stretch;
@@ -1035,6 +1032,7 @@ a.left-dash-item {
 }
 
 .right-dash {
+  height: 330px;
   display: flex;
   padding: 25px 25px 25px 0px;
   align-items: flex-start;
@@ -1100,6 +1098,7 @@ a.left-dash-item {
 #dashboard .mid-part .inner-box {
   width: auto;
   height: auto;
+  padding: 50px;
 }
 
 #dashboard .mid-part-back {
@@ -1124,7 +1123,7 @@ a.left-dash-item {
   padding: 25px;
   align-items: flex-start;
   gap: 25px;
-  align-self: stretch;
+  margin-top: 25px;
   border-radius: 6px;
   background: #fff;
 }
@@ -1172,8 +1171,37 @@ a.complain1 {
 
 /* Extra COde */
 
+.login-media {
+  width: 565px;
+}
+
+.front-complain-head {
+  border-bottom: 1px solid black;
+}
+
+.front-complain-heading {
+  
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.front-complain-heading p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0px;
+}
+
 .right-dash {
-  height: 422px;
+  height: 330px;
   display: flex;
   padding: 25px 25px 25px 0px;
   align-items: flex-start;
@@ -1349,6 +1377,7 @@ a.complain1 {
 
 .view-complain button:hover {
   background: var(--Pra-Black);
+  color: var(--Pra-White);
 }
 
 .view-complain a {
@@ -1470,6 +1499,15 @@ a.complain1 {
 }
 
 .mid-complain-content {
+  width: 78.62vw;
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  align-self: stretch;
+}
+
+.main-mid-complain-content {
+  padding: 50px 80px;
   display: flex;
   align-items: flex-start;
   gap: 25px;
@@ -1604,11 +1642,7 @@ a.complain1 {
 }
 
 .submit-button {
-  display: flex;
   padding: 1px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
   align-self: stretch;
   border-radius: 6px;
 }
@@ -1641,11 +1675,29 @@ a.complain1 {
   text-decoration: none;
 }
 
+.submit-button input {
+  display: flex;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 5px;
+  background: var(--Pra-Yellow);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.submit-button input:hover {
+  background: var(--Pra-Black);
+  color: var(--Pra-White);
+}
+
+
 /* Login Page */
 
 .login-left {
+  height: 93.85vh;
   background: var(--Pra-Yellow);
-  height: 924px;
   text-align: end;
 }
 
@@ -1659,7 +1711,7 @@ a.complain1 {
 
 .login-right {
   display: flex;
-  padding: 161px 189px;
+  padding: 80px 140px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1697,6 +1749,7 @@ a.complain1 {
 }
 
 .login-email {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1789,6 +1842,7 @@ a.complain1 {
 
 .login-button button:hover {
   background: var(--Pra-Black);
+  color: var(--Pra-White);
 }
 
 .login-button button a {
@@ -1866,8 +1920,6 @@ a.login-social {
 }
 
 .copyright-login {
-  margin-left: -12px;
-  width: 960px;
   display: flex;
   padding: 15px 0px;
   justify-content: center;
@@ -1895,11 +1947,10 @@ a.login-social {
   background-position-x: right;
   background-color: var(--Pra-Yellow);
   width: 100%;
-  height: 924px;
 }
 
 .position-manage {
-  height: 876px;
+  min-height: 93.85vh;
 }
 
 .register-content {
@@ -1908,8 +1959,7 @@ a.login-social {
   margin-left: auto;
   display: flex;
   width: 798px;
-  height: 800px;
-  padding: 0px 75px;
+  padding: 30px 75px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1921,7 +1971,6 @@ a.login-social {
 
 .register-details {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   gap: 20px;
@@ -1930,10 +1979,6 @@ a.login-social {
 }
 
 .register-email {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   align-self: stretch;
   width: 310px;
 }
@@ -1979,8 +2024,16 @@ a.login-social {
   outline: none;
 }
 
+.register-signup {
+  margin-top: 20px;
+}
+
 .register-signup .login-social {
   width: 648px;
+}
+
+.retypepass {
+  align-items: start;
 }
 
 .copyright-register {
@@ -2012,10 +2065,6 @@ a.login-social {
   background-color: var(--Pra-Yellow);
   width: 100%;
   height: 924px;
-}
-
-.position-manage {
-  height: 876px;
 }
 
 .forget-box {
@@ -2205,7 +2254,6 @@ a.login-social {
 
 .account-user-heading {
   display: flex;
-  width: 1495px;
   height: 42px;
   padding-bottom: 0px;
   flex-direction: column;
@@ -2366,7 +2414,7 @@ a.login-social {
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 7px;
   align-self: stretch;
 }
 
@@ -2588,20 +2636,11 @@ a.login-social {
   background: var(--Border1);
 }
 
-.serial-no {
-  display: flex;
-  width: 59px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-}
 
 .serial-head {
-  display: flex;
+  width: 59px;
   height: 45px;
   padding: 0px 12px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }
@@ -2620,11 +2659,8 @@ a.login-social {
 }
 
 .serial-list {
-  display: flex;
   height: 55px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }
@@ -2640,20 +2676,10 @@ a.login-social {
   flex: 1 0 0;
 }
 
-.complain-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  flex: 1 0 0;
-}
 
 .complain-head {
-  display: flex;
   height: 45px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }
@@ -2672,11 +2698,8 @@ a.login-social {
 }
 
 .complain-title-list {
-  display: flex;
   height: 55px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }
@@ -2692,29 +2715,11 @@ a.login-social {
   flex: 1 0 0;
 }
 
-.Complain-cat {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  flex: 1 0 0;
-}
-
-.complain-date-list {
-  display: flex;
-  width: 251px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-}
 
 .date-list-head {
-  display: flex;
+  width: 216px;
   height: 45px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
   background: #fff;
 }
 
@@ -2732,11 +2737,8 @@ a.login-social {
 }
 
 .date-list-body {
-  display: flex;
   height: 55px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }
@@ -2761,11 +2763,8 @@ a.login-social {
 }
 
 .action-head {
-  display: flex;
   height: 45px;
   padding: 0px 20px;
-  align-items: center;
-  gap: 10px;
   align-self: stretch;
   background: #fff;
 }

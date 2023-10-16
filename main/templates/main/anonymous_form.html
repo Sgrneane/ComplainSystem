@@ -2,10 +2,19 @@
 {% load static %}
 {% include 'layouts/header.html' %}
 {% include 'layouts/navbar.html' %}
+
+
+
 <form method="post" action="{% url 'main:anonymous_form' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="mid-complain-content">
+    <div class="main-mid-complain-content">
+        
         <div class="complain-front">
+            <div class="front-complain-head">
+                <div class="front-complain-heading">
+                    <p>Complain</p>
+                </div>
+            </div>
             <div class="complain-details">
                 <p>Complain Title</p>
                 <div class="complain-input">
