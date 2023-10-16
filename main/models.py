@@ -26,8 +26,12 @@ class ComplainName(models.Model):
     
 #Response Model
 class Response(models.Model):
-    response_to=models.OneToOneField(Complain, related_name="response", on_delete=models.CASCADE)
+    response_to=models.OneToOneField(Complain, related_name="response", on_delete=models.CASCADE,default=None,null=True)
+    response_by=models.ForeignKey(settings.AUTH_USER_MODEL, related_name="responses",on_delete=models.CASCADE,null=True,default=None)
     response_body=models.TextField()
     response_image=models.ImageField(null=True,upload_to="Images")
     created_date=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering=['-created_date']
 

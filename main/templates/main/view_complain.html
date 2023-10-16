@@ -1,4 +1,5 @@
 <!-- Complain List Dashoboard -->
+
 {% include 'layouts/header.html' %}
 
 <section id="dashboard">
@@ -12,19 +13,24 @@
                 <div class="mid-complain">
                     <div class="mid-complain-heading">
                         <div class="dash-header">
+                            <a href="{% url 'main:all_complains' %}" >
                             <div class="pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <path
                                         d="M13.7369 17.5254C13.6332 17.5256 13.5305 17.5052 13.4347 17.4655C13.3388 17.4259 13.2518 17.3677 13.1786 17.2942L8.44174 12.5574C8.29379 12.4092 8.21069 12.2084 8.21069 11.9991C8.21069 11.7897 8.29379 11.5889 8.44174 11.4408L13.1786 6.70392C13.3266 6.55584 13.5275 6.47266 13.7369 6.47266C13.9463 6.47266 14.1471 6.55584 14.2952 6.70392C14.4433 6.85199 14.5265 7.05282 14.5265 7.26223C14.5265 7.47164 14.4433 7.67248 14.2952 7.82055L10.1167 11.9997L14.2952 16.1776C14.4056 16.288 14.4809 16.4287 14.5113 16.5819C14.5418 16.735 14.5262 16.8938 14.4664 17.0381C14.4066 17.1823 14.3054 17.3056 14.1756 17.3924C14.0457 17.4791 13.8931 17.5254 13.7369 17.5254Z"
                                         fill="black" />
                                 </svg>
-                            </div>
+                            </div></a>
                             <div class="heading">
+                                {% block response_title %}
                                 <p>Complain</p>
+                                {% endblock %}
                             </div>
                             <div class="pointer1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <path
                                         d="M10.2637 17.5254C10.1076 17.5254 9.95491 17.4791 9.82506 17.3924C9.6952 17.3056 9.59399 17.1823 9.53422 17.038C9.47446 16.8937 9.45882 16.735 9.4893 16.5818C9.51977 16.4287 9.59499 16.288 9.70543 16.1776L13.8833 11.9997L9.70543 7.82177C9.55735 7.6737 9.47416 7.47286 9.47416 7.26346C9.47416 7.05405 9.55735 6.85321 9.70543 6.70514C9.8535 6.55706 10.0543 6.47388 10.2637 6.47388C10.4732 6.47388 10.674 6.55706 10.8221 6.70514L15.5589 11.442C15.7068 11.5901 15.7899 11.7909 15.7899 12.0003C15.7899 12.2097 15.7068 12.4105 15.5589 12.5586L10.8221 17.2955C10.7487 17.3686 10.6616 17.4265 10.5658 17.466C10.47 17.5054 10.3673 17.5256 10.2637 17.5254Z"
@@ -32,7 +38,7 @@
                                 </svg>
                             </div>
                             <div class="sub-heading">
-                                <p>Complain 123</p>
+                                <p>{{ complain.complain_title }}</p>
                             </div>
                         </div>
                     </div>
@@ -50,52 +56,54 @@
                             <p>Complain Message</p>
                             <h5>{{ complain.complain_message }}</h5>
                         </div>
-
+                        {% if complain.complain_image %}
                         <div class="clist-photo">
                             <div class="clist-details">
-                                <p>Title Name</p>
-                                <h5>Placeholder</h5>
+                                <p>Image</p>
                             </div>
                             <a
-  data-fancybox
-  data-src="{{complain.complain_image.url}}"
-  data-caption="{{ complain.complain_title}}"
->
-  <img src="{{complain.complain_image.url}}" width="200" height="150" alt="" />
-</a>
+                                data-fancybox
+                                data-src="{{complain.complain_image.url}}"
+                                data-caption="{{ complain.complain_title}}">
+                                <img src="{{complain.complain_image.url}}"
+                                    width="200" height="150" alt />
+                            </a>
                         </div>
-
+                        {% endif %}
+                        {% block reply_form %}
+                        {% if request.user.role == 1 or request.user.role == 2 %}
                         <div class="clist-photo">
-                            <button type="button" class="btn-cm" onclick="showform()">Reply</button>
+                            <button type="button" class="btn-cm"
+                                onclick="showform()">Reply</button>
                         </div>
 
-                        <div class="clist-photo w-100" id="myDiv" style="display:none;">
-                            <form class="row w-80" method="post" enctype="multipart/form-data">
+                        <div class="clist-photo w-100" id="myDiv"
+                            style="display:none;">
+                            <form class="row w-80" method="post"
+                                enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="col-lg-12">
                                     <h2 for="Message" class="w-100">Message</h2>
-                                    <textarea name="response_body" id="editor"  style="width: 400px; height: 200px;" placeholder="Message"></textarea>
-                                    <input type="file" class="w-100 mt-3" name="response_image">
-                                    <button class="btn-cm mt-4" type="submit">Submit </button>
+                                    <textarea name="response_body" id="editor"
+                                        style="width: 400px; height: 200px;"
+                                        placeholder="Message"></textarea>
+                                    <input type="file" class="w-100 mt-3"
+                                        name="response_image">
+                                    <button class="btn-cm mt-4" type="submit">Submit
+                                    </button>
                                 </div>
-                                
+
                             </form>
-                            
-                        </div>
 
-                    </div>
-
-                    <div class="complain-response">
-                        <div class="clist-details">
-                            <p>Response</p>
-                            <h5>Complain Title ABC</h5>
                         </div>
+                        {% endif %}
+                        {% endblock %}
                     </div>
+                  {% block reply_section %}
+                    {% endblock %}
                 </div>
 
             </div>
-
-
 
         </div>
     </div>

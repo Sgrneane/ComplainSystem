@@ -136,8 +136,9 @@
                                     <button class="card-button-left"><a href="">{{ complain.to_complain.department_name }}</a></button>
                                     <div class="card-button-right">
                                         <a href="{% url 'main:view_complain' id=complain.id %}" class="btn card-btn-anchor  btn-warning"><span class="material-symbols-outlined">visibility </span>&nbspView Complain </a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><span class="material-symbols-outlined">edit</span>&nbspEdit Complain</a>
-                                        <a href="#" class="btn card-btn-anchor btn-warning"><i class="fa-solid fa-share"></i>&nbspReply</a>
+                                        {% if request.user.role == 1 or request.user.role == 2 %}
+                                        <a href="{% url 'main:view_complain' id=complain.id %}" class="btn card-btn-anchor btn-warning"><i class="fa-solid fa-share"></i>&nbspReply</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <h5 class="card-title">{{complain.complain_title }}</h5>

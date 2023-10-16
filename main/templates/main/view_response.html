@@ -1,0 +1,30 @@
+{% extends 'main/view_complain.html' %}
+{% block response_title %}
+                                <p>Complain Responses</p>
+                                {% endblock %}
+{% block reply_form %}
+
+{% endblock %}
+
+{% block reply_section %}
+<div class="complain-response">
+    <div class="clist-details">
+        <p>Response</p>
+        <h5>{{ complain.response.response_body | safe }}</h5>
+    </div>
+    {% if complain.response.response_image %}
+                        <div class="clist-photo">
+                            <div class="clist-details">
+                                <p>Image</p>
+                            </div>
+                            <a
+                                data-fancybox
+                                data-src="{{complain.response.response_image.url}}"
+                                data-caption="{{ complain.complain_title}}">
+                                <img src="{{complain.response.response_image.url}}"
+                                    width="200" height="150" alt />
+                            </a>
+                        </div>
+                        {% endif %}
+</div>
+{% endblock %}

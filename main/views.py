@@ -6,6 +6,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.db.models import Q
 from . models import Complain, ComplainName, Response
+from django.db.models import Count
 from .forms import ComplainForm
 
 # Create your views here.
@@ -15,23 +16,6 @@ def index(request):
 
 def dashboard(request):
     return render(request,'main/dashboard.html')
-
-@is_user
-def create_complain(request):
-    """For creating complains."""
-    complain_name = ComplainName.objects.all()
-    if request.method == 'POST':
-        form = ComplainForm(request.POST, request.FILES)
-        if form.is_valid():
-            complain = form.save(commit=False)
-            complain.created_by = request.user
-            complain.save()
-        return redirect(reverse('main:my_complain'))
-    
-    context = {'complain_name':complain_name}
-
-    return render(request, 'main/create-complain.html', context)
-
 #View category Function
 def view_category(request):
     categories=ComplainName.objects.all()
@@ -53,15 +37,23 @@ def add_category(request):
         return redirect(reverse('main:view_category'))
     return render(request,'main/add_category.html')
 
-#View for viewing complain to normal user
-@login_required
-def my_complain(request):
-    user=request.user
-    my_complains=user.my_complains.all()
-    context={
-        'my_complains':my_complains
-    }
-    return render(request,'main/mycomplain.html',context)
+
+@is_user
+def create_complain(request):
+    """For creating complains."""
+    complain_name = ComplainName.objects.all()
+    if request.method == 'POST':
+        form = ComplainForm(request.POST, request.FILES)
+        if form.is_valid():
+            complain = form.save(commit=False)
+            complain.created_by = request.user
+            complain.save()
+        return redirect(reverse('main:all_complains'))
+    
+    context = {'complain_name':complain_name}
+
+    return render(request, 'main/create-complain.html', context)
+
 
 #viewing individual Complain
 def view_complain(request, id):
@@ -73,11 +65,12 @@ def view_complain(request, id):
         response_body=request.POST.get("response_body")
         response_image = request.FILES.get("response_image")
         Response.objects.create(
+            response_by=request.user,
             response_to_id=complain.id,
             response_body=response_body,
             response_image=response_image,
         )
-        return redirect("main:view_complain", id=complain)
+        return redirect("main:view_complain", id=complain.id)
     return render(request,'main/view_complain.html',context)
 
 
@@ -85,25 +78,51 @@ def view_complain(request, id):
 def all_complain(request):
     user=request.user
     if user.role == 1:
-        complains=Complain.objects.filter(created_by__isnull= False)
+        complains=Complain.objects.filter(
+            created_by__isnull= False
+        ).annotate(response_count = Count('response'))
+        complains = complains.filter(response_count = 0)
+        print(complains.count())
+
     elif user.role == 2:
         complains=Complain.objects.filter(
             Q(to_complain__department_name = user.admin_category.department_name) & 
             Q(created_by__isnull= False)
-        )
+        ).annotate(response_count = Count('response'))
+        complains = complains.filter(response_count = 0)
+    else:
+        my_complains=Complain.objects.filter(created_by=user).annotate(response_count=Count('response'))
+        complains=my_complains.filter(response_count=0)
     context={
         'complains' :complains,
     }
     return render(request,'main/all_complains.html',context)
 
-def anonymous_complain(request):
+
+
+# Complain_responses
+def complain_responses(request):
     user=request.user
     if user.role == 1:
-        anonymous_complains=Complain.objects.filter(created_by__isnull= True)
+        responses=Response.objects.all()
+    elif user.role == 2:
+        responses=user.responses.all()
+    else:
+        my_complains=user.my_complains.all()
+        responses=Response.objects.filter(response_to__in=my_complains)
     context={
-        'anonymous_complains':anonymous_complains
+        'responses': responses
     }
-    return render(request,'main/anonymous_complains.html',context)
+    return render(request, 'main/responses.html', context)
+
+def view_response(request, id):
+    complain=get_object_or_404(Complain, id=id)
+    context={
+        'complain':complain
+    }
+    return render(request,'main/view_response.html',context)
+
+
 
 def all_user(request):
     return render(request, 'main/all_user.html')
@@ -111,6 +130,7 @@ def my_account(request):
     return render(request,'main/myaccount.html')
 
 
+#Anonymous Complain /limiting anonymous user to have maximum of 2 complains
 def anonymous_form(request):
     complain_name = ComplainName.objects.all()
     context = {'complain_name':complain_name}
@@ -128,6 +148,16 @@ def anonymous_form(request):
             request.session.save() 
         return redirect(reverse('main:index'))
     return render(request,'main/anonymous_form.html',context)
+
+#views for anonymous Complains
+def anonymous_complain(request):
+    user=request.user
+    if user.role == 1:
+        anonymous_complains=Complain.objects.filter(created_by__isnull= True)
+    context={
+        'anonymous_complains':anonymous_complains
+    }
+    return render(request,'main/anonymous_complains.html',context)
 
 #View for responding to the complain
 
