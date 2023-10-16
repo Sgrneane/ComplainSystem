@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
-
+body{
+  font-family:poppins!important;
+}
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
@@ -532,7 +534,7 @@
 .end-buttons button a {
   color: #fff;
   font-feature-settings: "clig" off, "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -636,7 +638,7 @@
 .mid-part-front button a {
   color: #fff;
   font-feature-settings: "clig" off, "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1084,7 +1086,7 @@ a.left-dash-item {
 .right-dash-buttons button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1309,7 +1311,7 @@ a.complain1 {
 .right-dash-buttons button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1354,7 +1356,7 @@ a.complain1 {
 .view-complain a {
   color: var(--pra-white, #fff);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1392,7 +1394,7 @@ a.complain1 {
   text-decoration: none;
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -1633,7 +1635,7 @@ a.complain1 {
 .submit-button button a {
   color: var(--Pra-White);
   font-feature-settings: "clig" off, "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1794,7 +1796,7 @@ a.complain1 {
 .login-button button a {
   color: var(--Pra-White);
   font-feature-settings: "clig" off, "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -2187,7 +2189,7 @@ a.login-social {
 .account-upper-button button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -2503,7 +2505,7 @@ a.login-social {
 .searchbar-button button a {
   color: var(--Pra-White);
   font-feature-settings: "clig" off, "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -2827,7 +2829,7 @@ a.login-social {
 .action-body-view button a {
   color: var(--Pra-Yellow);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -2863,7 +2865,7 @@ a.login-social {
 .action-body-edit button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
-  font-family: Inter;
+  
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

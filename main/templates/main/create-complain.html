@@ -9,6 +9,7 @@
                 {% include 'layouts/left-dash.html' %}
 
             </div>
+            
             <div class="col-md-10 arrange-complain-dash">
                 <div class="mid-complain">
                     <div class="mid-complain-heading">
@@ -21,6 +22,7 @@
                                         fill="black" />
                                 </svg>
                             </div>
+                            
                             <div class="heading">
                                 <p>Complain</p>
                             </div>
@@ -48,13 +50,17 @@
                             <div class="complain-details">
                                 <p>Complain Title</p>
                                 <div class="complain-input">
-                                    <input type="text" placeholder="Placeholder", name="complain_title">
+                                    <input type="text" placeholder="Placeholder", name="complain_title" required>
                                 </div>
                             </div>
                             <div class="complain-details">
+                                <!-- {% for message in messages %}
+                                    {{ message }}
+                                       {% endfor %} -->
                                 <p>Complain Category</p>
                                 <div class="complain-input">
                                     <select name="to_complain" id="complain-cat" placeholder="placeholder">
+                                        <option value="SCC" selected disabled>Select Complain Category</option>
                                         {% for c in complain_name %}
                                             <option value={{c.id}}>{{c}}</option>
                                         {% endfor %}
@@ -64,7 +70,7 @@
                             <div class="complain-details">
                                 <p>Complain Message</p>
                                 <div class="describe-complain">
-                                    <input type="text" placeholder="Placeholder" name="complain_message">
+                                    <input type="text" placeholder="Placeholder" name="complain_message" required>
                                 </div>
                             </div>
                             <div class="complain-details">

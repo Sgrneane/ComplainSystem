@@ -7,9 +7,12 @@
                 {% include 'layouts/left-dash.html' %}
 
             </div>
+            
             <div class="col-md-10 arrange-complain">
                 <div class="mid-complain">
+                    
                     <div class="mid-complain-heading">
+                        
                         <div class="dash-header">
                             <div class="pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -146,17 +149,16 @@
                         <div class="card  w-100">
                             <div class="card-body">
                                 <div class="card-button ">
-                                    <button class="card-button-left"><a href>{{
-                                            complain.to_complain.department_name
-                                            }}</a></button>
+                                    <button class="card-button-left"><a href>
+                                            {{ complain.to_complain.department_name }}
+                                            </a></button>
                                     <div class="card-button-right">
                                         <a
                                             href="{% url 'main:view_complain' id=complain.id %}"
                                             class="btn card-btn-anchor  btn-warning"><span
                                                 class="material-symbols-outlined">visibility
                                             </span>&nbspView Complain </a>
-                                        {% if request.user.role == 1 or
-                                        request.user.role == 2 %}
+                                        {% if request.user.role == 1 or request.user.role == 2 %}
                                         <a
                                             href="{% url 'main:view_complain' id=complain.id %}"
                                             class="btn card-btn-anchor btn-warning"><i
@@ -164,10 +166,8 @@
                                         {% endif %}
                                     </div>
                                 </div>
-                                <h5 class="card-title">{{complain.complain_title
-                                    }}</h5>
-                                <p class="card-text">{{complain.complain_message
-                                    }}</p>
+                                <h5 class="card-title">{{complain.complain_title}}</h5>
+                                <p class="card-text">{{complain.complain_message| truncatewords:200|linebreaks}}</p>
                                 <div class="card-status-sec">
                                     <div class="card-status-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -197,15 +197,13 @@
                                         </svg>
                                     </div>
 
-                                    <span class="card-date">{{
-                                        complain.created_date }}</span>
+                                    <span class="card-date">{{ complain.created_date }}</span>
 
                                     <div class="card-status-icon">
                                         <span class="material-symbols-outlined">account_circle</span>
                                     </div>
 
-                                    <span class="card-authorname">{{
-                                        complain.created_by.username }}</span>
+                                    <span class="card-authorname">{{ complain.created_by.username }}</span>
                                 </div>
 
                             </div>

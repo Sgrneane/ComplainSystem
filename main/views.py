@@ -3,6 +3,7 @@ from django.urls import reverse
 from account.decorators import is_admin,is_superadmin,is_user
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.utils import timezone
+from django.contrib import messages
 from datetime import datetime
 from django.db.models import Q
 from . models import Complain, ComplainName, Response
@@ -48,7 +49,10 @@ def create_complain(request):
             complain = form.save(commit=False)
             complain.created_by = request.user
             complain.save()
-        return redirect(reverse('main:all_complains'))
+            return redirect(reverse('main:all_complains'))
+        else:
+            messages.info(request, f'Please select Complain Category')
+            return redirect(reverse('main:create_complain'))
     
     context = {'complain_name':complain_name}
 
