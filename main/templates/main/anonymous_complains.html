@@ -134,7 +134,10 @@
                                 <div class="card-button ">
                                     <button class="card-button-left"><a href="">{{ anonymous_complain.to_complain.department_name }}</a></button>
                                     <div class="card-button-right">
-                                        <a href="{% url 'main:view_complain' id=anonymous_complain.id %}" class="btn card-btn-anchor  btn-warning"><span class="material-symbols-outlined">visibility </span>&nbspView Complain </a>
+                                        <a href="{% url 'main:view_complain' id=anonymous_complain.id %}"
+                                            class="btn card-btn-anchor  btn-warning"><span
+                                                class="material-symbols-outlined">visibility </span>&nbspView Complain
+                                        </a>
                                     </div>
                                 </div>
                                 <h5 class="card-title">{{ anonymous_complain.complain_title }}</h5>
@@ -165,35 +168,35 @@
                                             </defs>
                                         </svg>
                                     </div>
-                                    
+
                                     <span class="card-date">{{ anonymous_complain.created_date }}</span>
 
                                     <div class="card-status-icon">
-                                         <span class="material-symbols-outlined">account_circle</span>
+                                        <span class="material-symbols-outlined">account_circle</span>
                                     </div>
-                                    
-        
+
+
                                 </div>
-                                                               
+
                             </div>
                         </div>
-                       {% endfor %}
-                        
+                        {% endfor %}
 
-                        
-                                                               
-                            </div>
-                        </div>
 
-                       
+
+
                     </div>
                 </div>
 
+
             </div>
-
-
-
         </div>
+
+    </div>
+
+
+
+    </div>
     </div>
 </section>
 
