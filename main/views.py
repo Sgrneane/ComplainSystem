@@ -23,7 +23,6 @@ def view_category(request):
     context={
         'categories':categories
     }
-    print(categories)
     return render(request,'main/view_category.html',context)
 # VIews to add new Complain Category
 def add_category(request):
@@ -86,7 +85,6 @@ def all_complain(request):
             created_by__isnull= False
         ).annotate(response_count = Count('response'))
         complains = complains.filter(response_count = 0)
-        print(complains.count())
 
     elif user.role == 2:
         complains=Complain.objects.filter(
