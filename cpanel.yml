@@ -1,0 +1,6 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/kantggjb/helloprasashan/ #this is original
+    - /bin/cp -r accounts $DEPLOYPATH
+    - /bin/cp -r main $DEPLOYPATH
+    - /bin/cp -r fonts $DEPLOYPATH
