@@ -1,0 +1,5 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/kantggjb/helloprasashan #this is original
+    - /bin/cp -r account $DEPLOYPATH
+    - /bin/cp -r main $DEPLOYPATH
