@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse,redirect,get_list_or_404, get_
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage,EmailMultiAlternatives,send_mail
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import update_session_auth_hash
 from django_otp.oath import totp
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
@@ -55,7 +56,7 @@ def login_user(request):
                 login(request,user)
                 return redirect(reverse('main:dashboard'))
             else:
-                return HttpResponse("Invalid Credentials")
+                return redirect('account:login_user')
         except AuthAlreadyAssociated:
             # Handle the case where the Google account is already associated with another account
             return redirect(reverse('main:dashboard'))
@@ -178,6 +179,22 @@ def change_password(request):
         
     context = {'user': user}
     return render(request, 'account/change_password.html', context)
+
+def admin_can_change_password(request,id):
+    user_to_change_password = get_object_or_404(CustomUser, id=id)
+    if request.method == 'POST':
+        new_password = request.POST.get('password')
+        retype_new_password = request.POST.get('retype_password')
+        if new_password != retype_new_password:
+            messages.error(request, "New Passwords didn't match")
+            return redirect('account:admin_can_change_password',id=id)
+        user_to_change_password.set_password(new_password)
+        user_to_change_password.save()
+        update_session_auth_hash(request, user_to_change_password)
+        messages.success(request, "Password Changed Successfully!")
+        return redirect('main:all_user')
+    context = {'user': user_to_change_password}
+    return render(request, 'account/admin_can_change_password.html', context)
 
 def forget_password(request):
     if request.method=='POST':
