@@ -98,7 +98,7 @@ def create_admin(request):
                 admin_category_id=department, 
                 **form.cleaned_data
             )
-            return redirect(reverse('account:create_admin'))
+            return redirect(reverse('main:all_user'))
         else:
             messages.error(request, 'User not created! Please fill the form with correct data!')
     else:
