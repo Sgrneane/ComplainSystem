@@ -1,5 +1,5 @@
 {% load static %}
-{% load static %}
+{% comment %} {% load static %} {% endcomment %}
 {% include 'layouts/header.html' %}
 {% include 'layouts/navbar.html' %}
 
@@ -18,7 +18,7 @@
             <div class="complain-details">
                 <p>Complain Title</p>
                 <div class="complain-input">
-                    <input type="text" placeholder="Placeholder", name="complain_title">
+                    <input type="text" placeholder="Complain Title", name="complain_title">
                 </div>
             </div>
             <div class="complain-details">
@@ -34,7 +34,7 @@
             <div class="complain-details">
                 <p>Complain Message</p>
                 <div class="describe-complain">
-                    <input type="text" placeholder="Placeholder" name="complain_message">
+                    <input type="text" placeholder="Place Your Message" name="complain_message">
                 </div>
             </div>
             <div class="complain-details">

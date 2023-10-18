@@ -36,7 +36,7 @@ body {
 .nav-main {
   display: flex;
   height: 90px;
-  padding: 0px 80px;
+  padding: 0px 60px;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
@@ -96,7 +96,7 @@ body {
 .nav-links ul li {
   display: flex;
   height: 48px;
-  padding: 15px 26px;
+  padding: 15px 14px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -212,7 +212,7 @@ body {
 .mid-part-front {
   position: relative;
   display: flex;
-  width: 540px;
+  width: 420px;
   flex-direction: column;
   align-items: flex-start;
   gap: 34px;
@@ -264,7 +264,6 @@ body {
 
 /* Home Footer */
 #home-footer {
-  margin-top: -45px;
   background: var(--Pra-Black);
 }
 
@@ -508,6 +507,83 @@ body {
 #home-footer .last-line .last-line-content .part-2 .footer-links:hover a {
   transform: translateY(-10px);
 }
+
+
+.end-footer {
+	border-top: 1px solid #000;
+background:  linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #000;
+}
+
+.end-footer-content {
+	display: flex;
+padding: 20px 0px;
+justify-content: space-between;
+align-items: center;
+}
+
+.end-part1 {
+	display: flex;
+	flex-direction: row;
+}
+
+.end-part1 .text {
+	color: #FFF;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.28px;
+padding-right: 6px;
+}
+
+.end-part1 .text p {
+	margin-bottom: 0px;
+}
+
+.social-link a {
+	color: #FFF;
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 0.28px;
+text-decoration: none;
+padding-right: 6px;
+transition: all 0.5s ease-in-out;
+}
+
+.social-link a:hover{
+	border-bottom: 1px solid white;
+	transform: translateY(-2.1rem);
+}
+
+.end-part2 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.design p{
+	color: #E5FFEE;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; 
+margin: 0px;
+padding-right: 15px;
+}
+
+.end-part1 .line1 {
+	display: flex;
+}
+
+.end-part1 .line2 {
+	display: flex;
+}
+
 
 /* Dashboard */
 
@@ -1881,7 +1957,7 @@ a.login-social {
 
 .personal-details {
   display: flex;
-  width: 1495px;
+  width: 100%;
   align-items: center;
   gap: 20px;
 }
@@ -2540,6 +2616,64 @@ a.login-social {
 
 .ck-editor__editable{
   height: 400px!important;
+}
+
+/* About Us */
+
+#about {
+  background: whitesmoke;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.aboutus {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.aboutus p {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: justify;
+}
+
+.aboutus h5{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Privacy */
+#privacy {
+  background: whitesmoke;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.privacy {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.privacy ul li {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: justify;
+}
+
+.privacy p {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: justify;
+}
+
+.privacy h5{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.privacy a{
+  color: var(--Pra-Yellow);
+  text-decoration: none;
 }
 
 /* Responsive */

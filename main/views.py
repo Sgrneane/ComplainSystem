@@ -163,4 +163,12 @@ def anonymous_complain(request):
 
 #View for responding to the complain
 
+def AboutUs(request):
+    context={}
+    return render(request,'main/aboutus.html',context)
+
+
+def privacy(request):
+    context={}
+    return render(request,'main/privacy.html')
 
