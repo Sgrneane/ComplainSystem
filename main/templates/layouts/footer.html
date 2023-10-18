@@ -25,6 +25,10 @@ ClassicEditor.create(
 } ).catch( error => {
   console.error( error );
 } );
+
+document.getElementById("back-button").addEventListener("click", function() {
+    window.history.back();
+});
     </script>
 </body>
 

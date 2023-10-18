@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from account.models import CustomUser
 from account.decorators import is_admin,is_superadmin,is_user
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.utils import timezone
@@ -127,7 +128,18 @@ def view_response(request, id):
 
 
 def all_user(request):
-    return render(request, 'main/all_user.html')
+    users=CustomUser.objects.all()
+    context={
+        'users':users,
+    }
+    return render(request, 'main/all_user.html',context)
+def view_user(request,id):
+    user=get_object_or_404(CustomUser, id=id)
+    context={
+        'user':user,
+    }
+    return render(request,'main/view_user.html',context)
+
 def my_account(request):
     return render(request,'main/myaccount.html')
 

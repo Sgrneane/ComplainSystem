@@ -18,6 +18,7 @@ urlpatterns = [
     path('view_category', views.view_category,name='view_category'),
     path('anonymous_complain', views.anonymous_complain, name='anonymous_complains'),
     path('all_user', views.all_user, name='all_user'),
+    path('all_user/view_user/<int:id>',views.view_user,name='view_user'),
     path('complain_responses', views.complain_responses, name='complain_responses'),
     path('anonymous_form', views.anonymous_form, name="anonymous_form"),
     path("aboutus/", views.AboutUs, name='about'),

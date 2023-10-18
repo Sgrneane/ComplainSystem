@@ -15,6 +15,7 @@
 
           <div class="mid-complain-heading">
             <div class="dash-header">
+              <a href="#" id="back-button">
               <div class="pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                   fill="none">
@@ -23,6 +24,7 @@
                   fill="black" />
                 </svg>
               </div>
+              </a>
               <div class="heading">
                 <p>Users</p>
               </div>
@@ -146,31 +148,31 @@
                   <th class="date-list-head"> <p>RESGISTER DATE</p> </th>
                   <th class="action-head"> <p>ACTION</p> </th>
                 </tr>
-
+                {% for user in users %}
                 <tr>
-                  <td class="serial-list">1.</td>
-                  <td class="complain-title-list"><p>Ram Sapkota</p></td>
+                  <td class="serial-list">{{ user.id }}</td>
+                  <td class="complain-title-list"><p>{{user.first_name }} {{ user.last_name }}</p></td>
                   <td class="complain-title-list">
-                    <p>abc@gmail.com</p>
+                    <p>{{ user.email }}</p>
                   </td>
                   <td class="date-list-body">
-                    <p>+977-9860003728</p>
+                    <p>{{ user.phone_number}}</p>
                   </td>
                   <td class="complain-title-list">
-                    <p>Category 1</p>
+                    <p>{{ user.role_name }}</p>
                   </td>
                   <td class="date-list-body">
-                    <p>2023-10-23</p>
+                    <p>{{ user.created_date|date:"Y-M-d" }}</p>
                   </td>
                   <td class="action-body">
                     <div class="action-body-view">
                         <button>
-                            <a href="complain-list.php">View</a>
+                            <a href="{% url 'main:view_user' id=user.id %}">View</a>
                         </button>
                     </div>
                     <div class="action-body-edit">
                         <button>
-                            <a href="">Edit</a>
+                            <a href="{% url 'account:edit_user' id=user.id %}">Edit</a>
                         </button>
                     </div>
                     <div class="action-body-delete">
@@ -196,6 +198,7 @@
                 </td>
 
                 </tr>
+                {% endfor %}
               </table>
                                   
             </div>
