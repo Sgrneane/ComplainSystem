@@ -107,8 +107,8 @@ def create_admin(request):
     return render(request,'account/create_admin.html', context)
 
 
-def edit_user(request):
-    user = get_object_or_404(CustomUser, id=request.user.id)
+def edit_user(request,id):
+    user = get_object_or_404(CustomUser, id=id)
     
     if request.user.id != user.id and request.user.role != 1:  #allows users to update their own details only while allowing admin to update other users details too
         messages.error(request, 'Cannot Access!')
