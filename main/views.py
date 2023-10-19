@@ -15,17 +15,19 @@ from .forms import ComplainForm
 def index(request):
     return render(request, 'main/index.html')
 
-
+@login_required
 def dashboard(request):
     return render(request,'main/dashboard.html')
 #View category Function
+@is_superadmin
 def view_category(request):
     categories=ComplainName.objects.all()
     context={
         'categories':categories
     }
     return render(request,'main/view_category.html',context)
-# VIews to add new Complain Category
+# View to add new Complain Category
+@is_superadmin
 def add_category(request):
     if request.method=="POST":
         complain_department=request.POST.get('complain_department')
@@ -126,13 +128,14 @@ def view_response(request, id):
     return render(request,'main/view_response.html',context)
 
 
-
+@is_superadmin
 def all_user(request):
     users=CustomUser.objects.all()
     context={
         'users':users,
     }
     return render(request, 'main/all_user.html',context)
+@is_superadmin
 def view_user(request,id):
     user=get_object_or_404(CustomUser, id=id)
     context={

@@ -87,7 +87,11 @@
 
                     </div>
                     <div class="complain">
-                        <a href="{% url 'main:create_complain' %}" class="complain1">
+                        {% if request.user.role == 1 or request.user.role == 2 %}
+                        <a href="{% url 'main:all_complains' %}" class="complain1">
+                            {% else %}
+                            <a href="{% url 'main:create_complain' %}" class="complain1">
+                                {% endif %}
                             <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65"
                                 fill="none">
                                 <path
@@ -115,7 +119,11 @@
                                 <p>(गुनासो)</p>
                             </div>
                         </a>
-                        <a href="{% url 'main:all_complains' %}" class="complain1">
+                        {% if request.user.role == 1 or request.user.role == 2 %}
+                        <a href="{% url 'main:complain_responses' %}" class="complain1">
+                            {% else %}
+                            <a href="{% url 'main:all_complains' %}" class="complain1">
+                                {% endif %}
                             <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65"
                                 fill="none">
                                 <path
@@ -142,8 +150,13 @@
                             </svg>
 
                             <div class="complain-name">
+                                {% if request.user.role == 1 or request.user.role == 2 %}
+                                <p>Complain Responses</p>
+                                <p>(प्रतिक्रियाहरु)</p>
+                                {% else %}
                                 <p>My Complain</p>
                                 <p>(मेरो गुनासो)</p>
+                                {% endif %}
                             </div>
                         </a>
                     </div>
