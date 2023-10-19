@@ -207,19 +207,37 @@ body {
 .last-logo {
   text-align: end;
   margin-top: -132px;
+  margin-bottom: -60px;
 }
 
 .mid-part-front {
   position: relative;
   display: flex;
-  width: 420px;
+  width: 26vw;
   flex-direction: column;
   align-items: flex-start;
   gap: 34px;
   flex-shrink: 0;
 }
 
-.mid-part-front p {
+#main-content .mid-part-front {
+  width: 430px;
+  border: 2px solid black;
+  border-radius: 16px;
+}
+
+.textbox-part {
+  padding: 30px 20px;
+}
+
+.textbox-part p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: justify;
+}
+
+#dashboard .mid-part-front p {
   position: relative;
   color: #fff;
   font-feature-settings: "clig" off, "liga" off;
@@ -230,7 +248,7 @@ body {
   line-height: 26px;
 }
 
-.mid-part-front button {
+#dashboard .mid-part-front button {
   position: relative;
   display: flex;
   padding: 16px;
@@ -242,7 +260,7 @@ body {
   border: none;
 }
 
-.mid-part-front button a {
+#dashboard .mid-part-front button a {
   color: #fff;
   font-feature-settings: "clig" off, "calt" off, "liga" off;
   
@@ -515,6 +533,7 @@ background:  linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 1
 }
 
 .end-footer-content {
+  flex-wrap: wrap;
 	display: flex;
 padding: 20px 0px;
 justify-content: space-between;
@@ -542,7 +561,7 @@ padding-right: 6px;
 }
 
 .social-link a {
-	color: #FFF;
+	color: var(--Pra-Yellow);
 font-family: Poppins;
 font-size: 14px;
 font-style: normal;
@@ -696,7 +715,7 @@ a.left-dash-item {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 25px;
+  gap: 10px;
   align-self: stretch;
 }
 
@@ -1646,7 +1665,7 @@ a.login-social {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
   border-radius: 6px;
   background: #fff;
   box-shadow: 50px 50px 75px 0px rgba(201, 122, 5, 0.25);
@@ -2132,7 +2151,7 @@ a.login-social {
   font-weight: 400;
   line-height: normal;
   border: none;
-  width: 300px;
+  width: 20vw;
 }
 
 .search-inner input:focus-visible {
@@ -2312,6 +2331,7 @@ a.login-social {
 
 .complain-lowerinfo {
   display: flex;
+  overflow-x: scroll;
   align-items: flex-start;
   align-self: stretch;
   border-radius: 3px;
@@ -2982,10 +3002,6 @@ a.login-social {
 		width: 218px !important;
 	}
 
-	#home-footer .second-line {
-		display: block !important;
-	}
-
 	#home-footer .second-line .end-part {
 		width: auto !important;
 		padding-left: 0px !important;
@@ -3061,5 +3077,17 @@ a.login-social {
 
   .main-mid-complain-content {
     padding: 0px 80px !important;
+  }
+
+  .hider {
+    display: none !important;
+  }
+
+  .aboutus {
+    width: 95% !important;
+  }
+
+  .privacy {
+    width: 95% !important;
   }
 }
