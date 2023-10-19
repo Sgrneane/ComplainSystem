@@ -2696,6 +2696,39 @@ a.login-social {
   text-decoration: none;
 }
 
+.edit-the-user {
+  padding: 25px;
+}
+
+.edit-the-user .register-content{
+  width: auto !important;
+  transform: translate(0%, 7%);
+  box-shadow: none;
+
+}
+
+.edit-the-user .login-button {
+  display: block;
+}
+
+.register-the-user .register-content {
+  width: auto !important;
+  transform: translate(0%, 7%);
+  box-shadow: none;
+}
+
+.register-the-user {
+  padding: 25px;
+}
+
+.register-the-user .login-button {
+  display: block;
+}
+
+.register-the-user .login-button button {
+  flex: 0;
+}
+
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
