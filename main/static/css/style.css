@@ -2340,6 +2340,10 @@ a.login-social {
   background: var(--Border1);
 }
 
+.complain-lowerinfo table{
+  background: #fff;
+}
+
 
 .serial-head {
   width: 59px;
@@ -2730,6 +2734,10 @@ a.login-social {
   flex: 0;
 }
 
+.register-the-user .register-details{
+  margin-top: 20px;
+}
+
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
@@ -3110,7 +3118,7 @@ a.login-social {
   }
 
   .main-mid-complain-content {
-    padding: 0px 80px !important;
+    padding: 0px 10px !important;
   }
 
   .hider {
@@ -3124,4 +3132,19 @@ a.login-social {
   .privacy {
     width: 95% !important;
   }
+  
+  .nav-hider {
+    display: none !important;
+  }
+
+  .end-buttons button {
+    padding: 12px 8px !important;
+    margin-right: 10px !important;
+    margin-left: 0px !important;
+  }
+
+  .end-buttons button a {
+    font-size: 12px;
+  }
+
 }
