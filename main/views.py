@@ -187,3 +187,6 @@ def privacy(request):
     context={}
     return render(request,'main/privacy.html')
 
+def faq(request):
+    return render(request,'main/FAQ.html')
+

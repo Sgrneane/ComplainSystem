@@ -1400,7 +1400,7 @@ a.complain1 {
 /* Login Page */
 
 .login-left {
-  height: 93.85vh;
+  
   background: var(--Pra-Yellow);
   text-align: end;
 }
@@ -1415,7 +1415,7 @@ a.complain1 {
 
 .login-right {
   display: flex;
-  padding: 80px 140px;
+  padding: 92px 140px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -2742,6 +2742,31 @@ a.login-social {
   border: none !important;
 }
 
+#faq {
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.accordion-item {
+  margin-top: 30px;
+}
+
+.accordion-item:not(:first-of-type) {
+  border-top: 1 !important;
+}
+
+.accordion {
+  margin-top: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.faqheading h3{
+  text-align: center;
+  font-weight: 700;
+}
+
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
@@ -3152,5 +3177,12 @@ a.login-social {
     padding: 0px 10px !important;
   }
 
+  .right-part-log {
+    height: 94.3vh !important;
+  }
+
+  .accordion {
+    width: 90% !important;
+  }
  
 }
