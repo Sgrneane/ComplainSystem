@@ -22,5 +22,6 @@ urlpatterns = [
     path('complain_responses', views.complain_responses, name='complain_responses'),
     path('anonymous_form', views.anonymous_form, name="anonymous_form"),
     path("aboutus/", views.AboutUs, name='about'),
-    path('privacy/',views.privacy,name='privacy')
+    path('privacy/',views.privacy,name='privacy'),
+    path('faq/',views.faq,name='faq'),
 ]
