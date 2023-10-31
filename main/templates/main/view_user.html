@@ -11,7 +11,7 @@
                 <div class="mid-complain">
                     <div class="mid-complain-heading">
                         <div class="dash-header">
-                            <div class="pointer">
+                            <div class="pointer" id="back-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <path
@@ -43,7 +43,7 @@
                                     </div>
 
                                     <div class="account-email">
-                                        <p>Email: <span>{{user.email}}</span></p>
+                                        <p>Email: <span>{{ user.email }}</span></p>
                                     </div>
 
                                     <div class="account-phone">
@@ -69,7 +69,7 @@
                             <div class="personal-details">
                                 <div class="personal-info">
                                     <p>Username</p>
-                                    <h5>{{user.username}}</h5>
+                                    <h5>{{ user.username }}</h5>
                                 </div>
                                 <div class="personal-info">
                                     <p>Role</p>
