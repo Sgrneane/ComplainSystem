@@ -2766,7 +2766,9 @@ a.login-social {
   text-align: center;
   font-weight: 700;
 }
-
+#error{
+  color:red;
+}
 /* Responsive */
 
 @media only screen and (max-width: 600px) {

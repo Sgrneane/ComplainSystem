@@ -13,6 +13,8 @@ from .forms import ComplainForm
 
 # Create your views here.
 def index(request):
+    if request.user.is_authenticated:
+        return dashboard(request)
     return render(request, 'main/index.html')
 
 @login_required
@@ -83,6 +85,10 @@ def view_complain(request, id):
 #view for all complains for admin and superadmin
 def all_complain(request):
     user=request.user
+    search_title = request.GET.get('search_title', '')
+    from_date = request.GET.get('from_date', '')
+    to_date = request.GET.get('to_date', '')
+    reset_button = request.GET.get('reset_button', '')
     if user.role == 1:
         complains=Complain.objects.filter(
             created_by__isnull= False
@@ -98,6 +104,18 @@ def all_complain(request):
     else:
         my_complains=Complain.objects.filter(created_by=user).annotate(response_count=Count('response'))
         complains=my_complains.filter(response_count=0)
+    if reset_button:
+        pass
+    else:
+        if search_title:
+            complains = complains.filter(
+                Q(complain_title__icontains=search_title) |
+                Q(complain_message__icontains=search_title)
+            )
+        if from_date:
+            complains = complains.filter(created_date__gte=from_date)
+        if to_date:
+            complains = complains.filter(created_date__lte=to_date)
     context={
         'complains' :complains,
     }

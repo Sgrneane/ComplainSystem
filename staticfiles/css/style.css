@@ -221,6 +221,7 @@ body {
 }
 
 #main-content .mid-part-front {
+  background-color: #000;
   width: 430px;
   border: 2px solid black;
   border-radius: 16px;
@@ -309,9 +310,9 @@ body {
 
 #home-footer .social-media ul li {
   display: flex;
-  width: 75px;
+  width: 100%;
   height: 75px;
-  padding: 25px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -946,7 +947,7 @@ a.complain1 {
   background: #9c6f00;
   color: rgba(255, 255, 255, 0.6);
   font-family: Poppins;
-  font-size: 39px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -1288,6 +1289,7 @@ a.complain1 {
 }
 
 .complain-input select {
+  width: 100%;
   border: 1px solid #dbdbdb;
   background: #fff;
   border-radius: 6px;
@@ -1398,7 +1400,7 @@ a.complain1 {
 /* Login Page */
 
 .login-left {
-  height: 93.85vh;
+  
   background: var(--Pra-Yellow);
   text-align: end;
 }
@@ -1413,7 +1415,7 @@ a.complain1 {
 
 .login-right {
   display: flex;
-  padding: 80px 140px;
+  padding: 92px 140px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1719,7 +1721,7 @@ a.login-social {
   line-height: normal;
   border: none;
   align-self: stretch;
-  width: 300px;
+  width: 100%;
   border: none;
 }
 
@@ -2138,6 +2140,7 @@ a.login-social {
 }
 
 .search-inner {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2152,7 +2155,7 @@ a.login-social {
   font-weight: 400;
   line-height: normal;
   border: none;
-  width: 20vw;
+  width: 100%;
 }
 
 .search-inner input:focus-visible {
@@ -2177,10 +2180,6 @@ a.login-social {
   border-radius: 6px;
   border: 1px solid var(--Border1);
   background: #fff;
-}
-
-.com-dates .search-inner input {
-  width: 150px;
 }
 
 .status-bar {
@@ -2738,6 +2737,39 @@ a.login-social {
   margin-top: 20px;
 }
 
+.input-group-append .input-group-text {
+  background: none;
+  border: none !important;
+}
+
+#faq {
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.accordion-item {
+  margin-top: 30px;
+}
+
+.accordion-item:not(:first-of-type) {
+  border-top: 1 !important;
+}
+
+.accordion {
+  margin-top: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.faqheading h3{
+  text-align: center;
+  font-weight: 700;
+}
+p#error{
+  margin-bottom: 0px;
+  color:red;
+}
 /* Responsive */
 
 @media only screen and (max-width: 600px) {
@@ -2789,10 +2821,6 @@ a.login-social {
 
 	.response .user-register {
 		padding: 0px 5px;
-	}
-
-	.response .user-register input {
-		width: 134px !important;
 	}
 
 	.right-part-log {
@@ -2885,7 +2913,6 @@ a.login-social {
 
 	.mid-complain-heading {
     margin-top: 20px !important;
-		display: block !important;
 		height: auto !important;
 		padding: 5px !important;
 	}
@@ -2949,10 +2976,6 @@ a.login-social {
 
 	.search {
 		margin-bottom: 10px;
-	}
-
-	.com-dates .search-inner input {
-		width: 305px !important;
 	}
 
 	.status .search-inner input {
@@ -3118,6 +3141,7 @@ a.login-social {
   }
 
   .main-mid-complain-content {
+    display: block !important;
     padding: 0px 10px !important;
   }
 
@@ -3147,4 +3171,20 @@ a.login-social {
     font-size: 12px;
   }
 
+  .card-btn-anchor {
+    margin: 5px !important;
+  }
+
+  #dashboard .card-button .card-button-right .btn {
+    padding: 0px 10px !important;
+  }
+
+  .right-part-log {
+    height: 94.3vh !important;
+  }
+
+  .accordion {
+    width: 90% !important;
+  }
+ 
 }

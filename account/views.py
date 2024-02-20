@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage,EmailMultiAlternatives,send_mail
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import update_session_auth_hash
 from django_otp.oath import totp
+from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
 from django.urls import reverse
@@ -56,6 +57,7 @@ def login_user(request):
                 login(request,user)
                 return redirect(reverse('main:dashboard'))
             else:
+                messages.error(request, 'Incorrect Username or Password!')
                 return redirect('account:login_user')
         except AuthAlreadyAssociated:
             # Handle the case where the Google account is already associated with another account
@@ -196,16 +198,18 @@ def admin_can_change_password(request,id):
     context = {'user': user_to_change_password}
     return render(request, 'account/admin_can_change_password.html', context)
 
-def forget_password(request):
-    if request.method=='POST':
-        user_email=request.POST.get('user_email')
-        subject="Hello Prasashan OTP alert!!"
-        message=f"Please use given OTP to reset your password."
-        msg = EmailMessage(subject,message, to=(user_email))
-        msg.send()
-        return HttpResponse("Email for OTP sent successfully.")
-
-    return render(request,'account/forget-password.html')
+class CustomPasswordResetView(PasswordResetView):
+    """
+    Customizing the django default passwordresetview to check if users email exist in
+    database before sending mail
+    """
+    def form_valid(self, form):
+        email = form.cleaned_data["email"]
+        # Check if the email exists in the database
+        if not CustomUser.objects.filter(email=email).exists():
+            messages.error(self.request, "Email does not exist.")
+            return self.form_invalid(form)
+        return super().form_valid(form) 
 
 # def generate_otp():
 #     otp = ''.join(random.choices('0123456789', k=6))

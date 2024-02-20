@@ -9,3 +9,12 @@ class ComplainForm(forms.ModelForm):
     class Meta:
         model = Complain
         fields = ['complain_title', 'complain_message', 'complain_image', 'to_complain']
+
+
+class ComplainSearch(forms.ModelForm):
+    search_title=forms.CharField(required=False)
+    from_date=forms.DateTimeField(required=False)
+    to_date=forms.DateTimeField(required=False)
+
+class UserSearch(forms.ModelForm):
+    Search_titile=forms.CharField(required='False')
