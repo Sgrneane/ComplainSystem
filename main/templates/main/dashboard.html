@@ -72,12 +72,16 @@
                                     </div>
 
                                     <div class="right-dash-buttons">
+                                        <a href="{% url 'account:edit_user' id=request.user.id %}">
                                         <button>
-                                            <a href="">Edit profile</a>
+                                            Edit profile
                                         </button>
+                                    </a>
+                                    <a href="{% url 'account:change_password'%}">
                                         <button>
-                                            <a href="">Change Password</a>
+                                            Change Password
                                         </button>
+                                    </a>
                                     </div>
                                 </div>
                             </div>

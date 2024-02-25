@@ -81,6 +81,7 @@ def create_admin(request):
     
     if request.method == 'POST':
         form = SignupForm(request.POST)
+        print('------hello------')
         role = request.POST.get('role')
         department = request.POST.get('department')
         
@@ -92,7 +93,9 @@ def create_admin(request):
             retype_password = form.cleaned_data['retype_password']
             
             if not handle_signup_validation(request, email, username, password, retype_password, phone):
+                print('------erro------')
                 return redirect('account:create_admin')
+            
             
             form.cleaned_data.pop('retype_password')
             User = get_user_model()
@@ -101,9 +104,11 @@ def create_admin(request):
                 admin_category_id=department, 
                 **form.cleaned_data
             )
+            print('---created---')
             return redirect(reverse('main:all_user'))
         else:
             messages.error(request, 'User not created! Please fill the form with correct data!')
+            print('----error2---')
     else:
         form = SignupForm()
     context = {'data': data}
@@ -193,7 +198,6 @@ def admin_can_change_password(request,id):
         user_to_change_password.set_password(new_password)
         user_to_change_password.save()
         update_session_auth_hash(request, user_to_change_password)
-        messages.success(request, "Password Changed Successfully!")
         return redirect('main:all_user')
     context = {'user': user_to_change_password}
     return render(request, 'account/admin_can_change_password.html', context)

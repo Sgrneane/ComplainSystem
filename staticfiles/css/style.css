@@ -781,6 +781,16 @@ a.left-dash-item {
   background: #000;
 }
 
+.right-dash-buttons a button {
+  color: var(--Pra-White);
+  font-feature-settings: "calt" off, "liga" off;
+
+}
+a{
+  text-decoration: none;
+}
+
+
 .right-dash-buttons button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
@@ -1474,6 +1484,7 @@ a.complain1 {
 }
 
 .user-input {
+  width: 555px;
   display: flex;
   height: 55px;
   padding: 0px 15px;
@@ -2766,8 +2777,7 @@ a.login-social {
   text-align: center;
   font-weight: 700;
 }
-p#error{
-  margin-bottom: 0px;
+#error{
   color:red;
 }
 /* Responsive */
@@ -2776,6 +2786,10 @@ p#error{
 	.login-left {
 		display: none !important;
 	}
+
+  .user-input {
+    width: auto !important;
+  }
 
 	.login-right {
 		padding: 93px 20px !important;

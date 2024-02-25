@@ -18,7 +18,7 @@ def handle_signup_validation(request, email, username, password, retype_password
         messages.error(request, 'Passwords did not match!')
         return False
 
-    if len(phone) < 10:
+    if len(phone) != 10:
         messages.error(request, 'Please enter a valid phone number')
         return False
 

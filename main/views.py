@@ -10,6 +10,7 @@ from django.db.models import Q
 from . models import Complain, ComplainName, Response
 from django.db.models import Count
 from .forms import ComplainForm
+from account import choices
 
 # Create your views here.
 def index(request):
@@ -126,6 +127,10 @@ def all_complain(request):
 # Complain_responses
 def complain_responses(request):
     user=request.user
+    search_title = request.GET.get('search_title', '')
+    from_date = request.GET.get('from_date', '')
+    to_date = request.GET.get('to_date', '')
+    reset_button = request.GET.get('reset_button', '')
     if user.role == 1:
         responses=Response.objects.all()
     elif user.role == 2:
@@ -133,6 +138,19 @@ def complain_responses(request):
     else:
         my_complains=user.my_complains.all()
         responses=Response.objects.filter(response_to__in=my_complains)
+
+    
+
+    if search_title:
+        responses = responses.filter(
+            Q(response_body__icontains = search_title) |
+            Q(response_to__complain_title__icontains = search_title) |
+            Q(response_to__complain_message__icontains=search_title)
+        )
+    if from_date:
+        responses = responses.filter(created_date__gte=from_date)
+    if to_date:
+        responses = responses.filter(created_date__lte=to_date)
     context={
         'responses': responses
     }
@@ -149,7 +167,21 @@ def view_response(request, id):
 @is_superadmin
 def all_user(request):
     users=CustomUser.objects.all()
+    roles=choices.ROLE_CHOICES
+    search_title = request.GET.get('search_title', '')
+    role = request.GET.get('role', '')
+    if search_title:
+        users=users.filter(
+            Q(first_name__icontains=search_title) |
+            Q(last_name__icontains = search_title) |
+            Q(phone_number__icontains = search_title) |
+            Q(email__icontains = search_title) 
+        )
+    if role:
+        users=users.filter(role = role)
+    
     context={
+        'roles':roles,
         'users':users,
     }
     return render(request, 'main/all_user.html',context)
@@ -160,6 +192,14 @@ def view_user(request,id):
         'user':user,
     }
     return render(request,'main/view_user.html',context)
+
+
+@is_superadmin
+def delete_user(request,id):
+    user=get_object_or_404(CustomUser, id=id)
+    user.delete()
+    return redirect('main:all_user')
+
 
 def my_account(request):
     return render(request,'main/myaccount.html')
@@ -187,10 +227,23 @@ def anonymous_form(request):
 #views for anonymous Complains
 def anonymous_complain(request):
     user=request.user
+    search_title = request.GET.get('search_title', '')
+    print(search_title)
+    from_date = request.GET.get('from_date', '')
+    to_date = request.GET.get('to_date', '')
     if user.role == 1:
-        anonymous_complains=Complain.objects.filter(created_by__isnull= True)
+        complains=Complain.objects.filter(created_by__isnull= True)
+    if search_title:
+            complains = complains.filter(
+                Q(complain_title__icontains=search_title) |
+                Q(complain_message__icontains=search_title)
+            )
+    if from_date:
+        complains = complains.filter(created_date__gte=from_date)
+    if to_date:
+        complains = complains.filter(created_date__lte=to_date)
     context={
-        'anonymous_complains':anonymous_complains
+        'anonymous_complains':complains
     }
     return render(request,'main/anonymous_complains.html',context)
 

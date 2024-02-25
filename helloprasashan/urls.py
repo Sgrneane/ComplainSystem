@@ -27,7 +27,7 @@ urlpatterns = [
     path('account/',include('account.urls', namespace='account')),
     path('social-auth/',include('social_django.urls', namespace='social')),
 
-       path(
+    path(
         "reset-password/",
         CustomPasswordResetView.as_view(
             template_name="account/forget-password.html"

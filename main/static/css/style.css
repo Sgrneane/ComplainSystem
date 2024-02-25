@@ -781,6 +781,16 @@ a.left-dash-item {
   background: #000;
 }
 
+.right-dash-buttons a button {
+  color: var(--Pra-White);
+  font-feature-settings: "calt" off, "liga" off;
+
+}
+a{
+  text-decoration: none;
+}
+
+
 .right-dash-buttons button a {
   color: var(--Pra-White);
   font-feature-settings: "calt" off, "liga" off;
